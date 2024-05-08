@@ -184,7 +184,7 @@
 			<div class="row">
 				<!-- LOGO của trang web -->
 				<div class="col-md-3 top-info text-left mt-lg-4">
-					<img width="40%" height="30%" src="{!! asset('user\images\logo.png')!!}" class="img-fluid" alt="" >
+					<img width="70%" height="70%" src="{!! asset('user\images\logo-2.png')!!}" class="img-fluid" alt="" >
 				</div>
 				<!-- BANNER của trang web -->
 				<div class="col-md-6 logo-w3layouts top-info text-center">

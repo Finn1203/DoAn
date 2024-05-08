@@ -24,7 +24,7 @@
 					<div class="row">
 						<!-- product left -->
 						<div class="side-bar col-lg-3">
-							
+
 							<!-- price range -->
 							<form action="{{route('user.shop')}}" method= "get">
 								@csrf
@@ -38,19 +38,19 @@
 										<input type="text" id="end_price" name="end_price" value = "{{$max_price}}" hidden />
 										<input type="text" id="start_price_range" value = "{{$min_price_range}}" hidden />
 										<input type="text" id="end_price_range"  value = "{{$max_price_range}}" hidden />
-										
+
 									</li>
 								</ul>
 								<br>
 								<div class="sorting">
-							<select id="sort" name="tacgia"  class="frm-field required sect">
+							<select id="sort" name="tacgia"  class="frm-field required sect" style="width: 100%;">
 								<option value="null">Lọc tác giả </option>
 								<!-- <option value="null">Bán chạy nhất</option>  -->
 								@foreach($tacgia as $tacgias)
-								<option value="{{$tacgias->id}}">{{$tacgias->tentacgia}}</option> 
-											@endforeach		
+								<option value="{{$tacgias->id}}">{{$tacgias->tentacgia}}</option>
+											@endforeach
 							</select>
-							
+
 							    </div>
 								<div class="loc-price-button">
 									<input type="submit" value="Lọc" class="btn-search-price"/>
@@ -99,15 +99,15 @@
 										<input type="checkbox" class="checked">
 										<span class="span">Sách Kèm Đĩa</span>
 									</li>
-			
+
 								</ul>
 							</div> -->
 							<!-- //discounts -->
 							<!-- reviews -->
-							
+
 							<!-- //reviews -->
 							<!-- deals -->
-							
+
 							<!-- //deals -->
 						</div>
 						<!-- //product left -->
@@ -117,13 +117,13 @@
 								<div class="row">
 										<div class="col-md-6 shop_left">
 												<img src="{!! asset('user\images\Book\SACH_KINH_TE\banner_Sach_kinh_te1.png') !!}" alt="">
-												
+
 										</div>
 										<div class="col-md-6 shop_right">
 												<img src="{!! asset('user\images\Book\SACH_KINH_TE\banner_Sach_kinh_te1.png') !!}" alt="">
-									
+
 											</div>
-						
+
 								</div>
 								<div class="row">
 									<!-- /womens -->
@@ -151,7 +151,7 @@
 																	<span class="money ">{{number_format($books['GiaTien'],0,",",",")}} VND</span>
 																</div>
 															</div>
-															
+
 														</div>
 														@if (session()->has('infoUser') != null)
 														<div class="googles single-item hvr-outline-out">
@@ -159,28 +159,28 @@
 															{{csrf_field()}}
 															<button type="button" class="googles-cart pgoogles-cart" onclick="AddCart({{ $books->id }})">
 																<i class="fas fa-cart-plus"></i>
-															</button>								
+															</button>
 														</form>
 														</div>
 														<div class="googles single-item hvr-outline-out" style="">
 															<form>
 															{{ csrf_field() }}
 																<button type="button" class="googles-heart" onclick="Favorite({{ $books->id }})">
-																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>	
-																</button>	
+																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>
+																</button>
 															</form>
 														</div>
 														@endif
 													</div>
 													<div class="clearfix"></div>
 												</div>
-												
+
 											</div>
-											
+
 										</div>
 									</div>
 									@endforeach
-								
+
 							</div>
 							<br>
 											{{$sach->links()}}
@@ -191,4 +191,3 @@
 			</div>
 		</section>
         @stop
-		
