@@ -16,7 +16,7 @@ class KichThuocController extends Controller
     public function index()
     {
         //
-        $kichthuoc = KichThuoc::where('Xoa',0)->orderBy('id', 'desc')->paginate(12);
+        $kichthuoc = KichThuoc::where('Xoa', 0)->orderBy('id', 'desc')->paginate(12);
         return View('admin.pages.KichThuoc.index', compact('kichthuoc'));
     }
 
@@ -40,18 +40,17 @@ class KichThuocController extends Controller
     public function store(Request $request)
     {
         //
-        $kichthuoc = new KichThuoc;
+        $kichthuoc = new KichThuoc();
         $this->validate($request, [
-            'kichthuoc' => 'required',        
+            'kichthuoc' => 'required',
         ]);
-        $kichthuoc->kichthuoc=$request->kichthuoc;
-        $kichthuoc->Xoa=0;
-        if($kichthuoc->save())
-        {
+        $kichthuoc->kichthuoc = $request->kichthuoc;
+        $kichthuoc->Xoa = 0;
+        if ($kichthuoc->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('kichthuoc.index');
     }
 
@@ -75,7 +74,7 @@ class KichThuocController extends Controller
     public function edit($id)
     {
         //
-        $kichthuoc= KichThuoc::find($id);//Nhacungcap tên model      
+        $kichthuoc = KichThuoc::find($id); //Nhacungcap tên model
         return view('admin.pages.KichThuoc.edit')->with('kichthuoc', $kichthuoc);
     }
 
@@ -89,20 +88,18 @@ class KichThuocController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kichthuoc= KichThuoc::find($id);
-        
-        $data=$request->validate([
-            'kichthuoc' => 'required',        
-           
-        ]);    
-        
-        if($kichthuoc->update($data))
-        { 
+        $kichthuoc = KichThuoc::find($id);
+
+        $data = $request->validate([
+            'kichthuoc' => 'required',
+        ]);
+
+        if ($kichthuoc->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('kichthuoc.index');
     }
 

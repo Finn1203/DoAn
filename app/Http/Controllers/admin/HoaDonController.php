@@ -29,44 +29,34 @@ class HoaDonController extends Controller
         //
 
         $hoadon = HoaDonBan::orderBy('created_at', 'desc')->paginate(12);
-        $chitiethoadonban=ChiTietHoaDonBan::all();
-        if(isset($_GET['sort_by'])){
-          $sort_by=$_GET['sort_by'];
+        $chitiethoadonban = ChiTietHoaDonBan::all();
+        if (isset($_GET['sort_by'])) {
+            $sort_by = $_GET['sort_by'];
 
-          if($sort_by=='all'){
-            $hoadon=HoaDonBan::orderby('created_at','DESC')->get();
-
-          }
-          elseif($sort_by=='cancel'){
-            $hoadon=HoaDonBan::where('TrangThai',0)->orderby('created_at','DESC')->get();
-
-          }
-          elseif($sort_by=='new'){
-            $hoadon=HoaDonBan::where('TrangThai',1)->orderby('created_at','DESC')->get();
-
-          }
-          elseif($sort_by=='done'){
-            $hoadon=HoaDonBan::where('TrangThai',3)->orderby('created_at','DESC')->get();
-
-          }
-          elseif($sort_by=='move'){
-
-              $hoadon=HoaDonBan::where('TrangThai',4)->orderby('created_at','DESC')->get();
-          }
-          elseif($sort_by=='complete'){
-
-            $hoadon=HoaDonBan::where('TrangThai',2)->orderby('created_at','DESC')->get();
+            if ($sort_by == 'all') {
+                $hoadon = HoaDonBan::orderby('created_at', 'DESC')->get();
+            } elseif ($sort_by == 'cancel') {
+                $hoadon = HoaDonBan::where('TrangThai', 0)->orderby('created_at', 'DESC')->get();
+            } elseif ($sort_by == 'new') {
+                $hoadon = HoaDonBan::where('TrangThai', 1)->orderby('created_at', 'DESC')->get();
+            } elseif ($sort_by == 'done') {
+                $hoadon = HoaDonBan::where('TrangThai', 3)->orderby('created_at', 'DESC')->get();
+            } elseif ($sort_by == 'move') {
+                $hoadon = HoaDonBan::where('TrangThai', 4)->orderby('created_at', 'DESC')->get();
+            } elseif ($sort_by == 'complete') {
+                $hoadon = HoaDonBan::where('TrangThai', 2)->orderby('created_at', 'DESC')->get();
+            }
         }
 
-      }
-
-        return View('admin.pages.HoaDon.index', compact('hoadon','chitiethoadonban'));
+        return View('admin.pages.HoaDon.index', compact('hoadon', 'chitiethoadonban'));
     }
-    public function getDetail($id){
+    public function getDetail($id)
+    {
         $chitiethoadonban = ChiTietHoaDonBan::where('IdHoaDB', $id)->get();
 
         $hoadon = HoaDonBan::find($id);
-        $html = '
+        $html =
+            '
         <div class="baobang">
         <div class="table-agile-info left-table">
 
@@ -91,9 +81,15 @@ class HoaDonController extends Controller
                     <tbody>
 
                     <tr>
-                        <td>'.$hoadon->TaiKhoan->HoTen.'</td>
-                        <td>'.$hoadon->TaiKhoan->SDT.'</td>
-                        <td>'.$hoadon->TaiKhoan->Email.'</td>
+                        <td>' .
+            $hoadon->TaiKhoan->HoTen .
+            '</td>
+                        <td>' .
+            $hoadon->TaiKhoan->SDT .
+            '</td>
+                        <td>' .
+            $hoadon->TaiKhoan->Email .
+            '</td>
                       </tr>
 
                     </tbody>
@@ -134,141 +130,144 @@ class HoaDonController extends Controller
               </thead>
               <tbody>';
 
-
-                $i=0;
-                foreach($chitiethoadonban as $chitiet){
-                        $i++;
-                        $html .= '
+        $i = 0;
+        foreach ($chitiethoadonban as $chitiet) {
+            $i++;
+            $html .=
+                '
                         <tr>
 
-                        <td><i>'.$i.'</i></td>
-                        <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">'.$chitiet->Sach->TenSach.'</td>
-                        <td><img src="../image/'.$chitiet->Sach->AnhSach.'" style="width:50px; height:50px; border-radius:0%"></td>
-                        <td>'.$chitiet->SoLuong.'</td>
-                        <td>'.number_format(15000 ,0,",",",").' VND</td>
-                        <td>'.number_format($chitiet->GiaBan ,0,",",",").' VND</td>
-                        <td>'.number_format($chitiet->HoaDon->TongTien ,0,",",",").' VND</td>
+                        <td><i>' .
+                $i .
+                '</i></td>
+                        <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">' .
+                $chitiet->Sach->TenSach .
+                '</td>
+                        <td><img src="../image/' .
+                $chitiet->Sach->AnhSach .
+                '" style="width:50px; height:50px; border-radius:0%"></td>
+                        <td>' .
+                $chitiet->SoLuong .
+                '</td>
+                        <td>' .
+                number_format(15000, 0, ',', ',') .
+                ' VND</td>
+                        <td>' .
+                number_format($chitiet->GiaBan, 0, ',', ',') .
+                ' VND</td>
+                        <td>' .
+                number_format($chitiet->HoaDon->TongTien, 0, ',', ',') .
+                ' VND</td>
 
 
                         </tr>';
+        }
 
-            }
-
-     $html .=' </div> </div>
+        $html .=
+            ' </div> </div>
      <div class="modal-footer">
      <div id="detail">
 
 
-     <select id="trangthaidonhang" data-id='.$hoadon->id.' class="form-control order_details">';
-     if($hoadon->TrangThai==1){
-     $html .=' <option selected value="1">Chưa xử lý</option>
+     <select id="trangthaidonhang" data-id=' .
+            $hoadon->id .
+            ' class="form-control order_details">';
+        if ($hoadon->TrangThai == 1) {
+            $html .= ' <option selected value="1">Chưa xử lý</option>
       <option  value="3">Duyệt Đơn</option>
       <option  value="0">Hủy Đơn</option>';
-    }else if($hoadon->TrangThai==3){
-      $html .='<option selected hidden value="3">Đã Duyệt</option>
+        } elseif ($hoadon->TrangThai == 3) {
+            $html .= '<option selected hidden value="3">Đã Duyệt</option>
       <option  value="0">Hủy Đơn</option>
       <option value="4">Đang giao hàng</option>';
-
-     }
-    elseif($hoadon->TrangThai==4){
-      $html .='<option selected hidden value="3">Đang giao hàng</option>
+        } elseif ($hoadon->TrangThai == 4) {
+            $html .= '<option selected hidden value="3">Đang giao hàng</option>
       <option  value="0">Hủy Đơn</option>
       <option  value="2">Giao hàng thành công</option>';
-
-    }
-    elseif($hoadon->TrangThai==2){
-      $html .='<option selected hidden value="2">Giao hàng thành công</option>
+        } elseif ($hoadon->TrangThai == 2) {
+            $html .= '<option selected hidden value="2">Giao hàng thành công</option>
       <option  value="2">Giao hàng thành công</option>';
-    }
-    else{
-      $html .='<option selected hidden value="0">Đã Hủy</option>
+        } else {
+            $html .= '<option selected hidden value="0">Đã Hủy</option>
       <option  value="0">Đã Hủy</option>
       <option value="4">Đang giao hàng</option>';
-    }
-    $html .='</select></div>';
-
+        }
+        $html .= '</select></div>';
 
         return $html;
-
     }
-    public function move($idHoaDB){
-		$order=HoaDonBan::where('IdHoaDB',$idHoaDB)->update(['TrangThai'=>4]);
-		return redirect()->back()->with('message','đơn hàng đang được vận chuyển');
+    public function move($idHoaDB)
+    {
+        $order = HoaDonBan::where('IdHoaDB', $idHoaDB)->update(['TrangThai' => 4]);
+        return redirect()->back()->with('message', 'đơn hàng đang được vận chuyển');
         dd($order);
-	}
-
-	public function complete($idHoaDB){
-		$order=HoaDonBan::where('IdHoaDB',$idHoaDB)->update(['TrangThai'=>5]);
-		return redirect()->back()->with('message','đơn hàng đã giao thành công');
-	}
-	public function huy_don_hang(Request $req){
-		$data=$req->all();
-		$order=HoaDonBan::where('IdHoaDB',$data['idHoaDB'])->update(['TrangThai'=>3]);
-	}
-	public function order_code(Request $request ,$idHoaDB){
-		$order = HoaDonBan::where('IdHoaDB',$idHoaDB)->first();
-		$order->delete();
-		Session::flash('message','Xóa đơn hàng thành công');
-		return redirect()->back();
-
-	}
-  public function changeStatusOrder(Request $request){
-
-    $order = HoaDonBan::find($request->id);
-    $order->TrangThai = $request->TrangThai;
-    $orde=$order->TaiKhoan->HoTen;
-    $orde1=$order->TaiKhoan->Email;
-
-    if($order->save()){
-      if($order->TrangThai == 1){
-        return 'Đơn Mới';
-
-      }else if($order->TrangThai == 2&&$order->TongTien>=500000){
-        $time = Carbon::now()->timestamp;
-        $magiamgia = new MaGiamGia();
-        $magiamgia->Code = 'MG'.$order->id.$time;
-        $magiamgia->SoLuong=1;
-        $magiamgia->ChietKhau=10;
-        $magiamgia->LoaiKM=1;
-        $magiamgia->NgayBĐ= Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y'); //hom nay
-        $magiamgia->NgayKT=Carbon::now('Asia/Ho_Chi_Minh')->addMonth()->format('d-m-Y');; //1 thang
-        $magiamgia->TrangThai=1;
-        $magiamgia->Xoa=0;
-        if($magiamgia->save())
-        {
-          $data = [
-            'name' => $orde,
-            'MaDH' => $order->id,
-            'magiamgia' => $magiamgia->Code,
-            'ngaybatdau' =>  $magiamgia->NgayBĐ,
-            'ngayketthuc' => $magiamgia->NgayKT,
-            'Email'=>$orde1,
-        ];
-        Mail::to($orde1)->send(new Mailmagiamgia($data));
-        return 'Giao hàng thành công';
-      }
-
-      }else if($order->TrangThai == 2){
-
-        return 'Giao hàng thành công';
-      }
-        //mail
-
-       else if($order->TrangThai == 3){
-        return 'Duyệt đơn thành công';
-
-      }
-    elseif($order->TrangThai == 4){
-      return 'Đang giao hàng';
-
-    }else{
-      return 'Đơn hàng đã hủy';
     }
-      //else if
-  }
-    return null;
 
-  }
+    public function complete($idHoaDB)
+    {
+        $order = HoaDonBan::where('IdHoaDB', $idHoaDB)->update(['TrangThai' => 5]);
+        return redirect()->back()->with('message', 'đơn hàng đã giao thành công');
+    }
+    public function huy_don_hang(Request $req)
+    {
+        $data = $req->all();
+        $order = HoaDonBan::where('IdHoaDB', $data['idHoaDB'])->update(['TrangThai' => 3]);
+    }
+    public function order_code(Request $request, $idHoaDB)
+    {
+        $order = HoaDonBan::where('IdHoaDB', $idHoaDB)->first();
+        $order->delete();
+        Session::flash('message', 'Xóa đơn hàng thành công');
+        return redirect()->back();
+    }
+    public function changeStatusOrder(Request $request)
+    {
+        $order = HoaDonBan::find($request->id);
+        $order->TrangThai = $request->TrangThai;
+        $orde = $order->TaiKhoan->HoTen;
+        $orde1 = $order->TaiKhoan->Email;
+
+        if ($order->save()) {
+            if ($order->TrangThai == 1) {
+                return 'Đơn Mới';
+            } elseif ($order->TrangThai == 2 && $order->TongTien >= 500000) {
+                $time = Carbon::now()->timestamp;
+                $magiamgia = new MaGiamGia();
+                $magiamgia->Code = 'MG' . $order->id . $time;
+                $magiamgia->SoLuong = 1;
+                $magiamgia->ChietKhau = 10;
+                $magiamgia->LoaiKM = 1;
+                $magiamgia->NgayBĐ = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y'); //hom nay
+                $magiamgia->NgayKT = Carbon::now('Asia/Ho_Chi_Minh')->addMonth()->format('d-m-Y'); //1 thang
+                $magiamgia->TrangThai = 1;
+                $magiamgia->Xoa = 0;
+                if ($magiamgia->save()) {
+                    $data = [
+                        'name' => $orde,
+                        'MaDH' => $order->id,
+                        'magiamgia' => $magiamgia->Code,
+                        'ngaybatdau' => $magiamgia->NgayBĐ,
+                        'ngayketthuc' => $magiamgia->NgayKT,
+                        'Email' => $orde1,
+                    ];
+                    Mail::to($orde1)->send(new Mailmagiamgia($data));
+                    return 'Giao hàng thành công';
+                }
+            } elseif ($order->TrangThai == 2) {
+                return 'Giao hàng thành công';
+            }
+            //mail
+            elseif ($order->TrangThai == 3) {
+                return 'Duyệt đơn thành công';
+            } elseif ($order->TrangThai == 4) {
+                return 'Đang giao hàng';
+            } else {
+                return 'Đơn hàng đã hủy';
+            }
+            //else if
+        }
+        return null;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -336,36 +335,37 @@ class HoaDonController extends Controller
     {
         //
     }
-    public function print_order($id){
-      $pdf = \App::make('dompdf.wrapper');
-      $pdf->loadHTML($this->print_order_convert($id));
+    public function print_order($id)
+    {
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($this->print_order_convert($id));
 
-      return $pdf->stream();
-  }
-    public function print_order_convert($id){
+        return $pdf->stream();
+    }
+    public function print_order_convert($id)
+    {
+        $order_details = ChiTietHoaDonBan::where('IdHoaDB', $id)->get();
 
-      $order_details = ChiTietHoaDonBan::where('IdHoaDB',$id)->get();
+        $order = HoaDonBan::find($id);
+        $giamgia = 0;
 
-      $order = HoaDonBan::find($id);
-      $giamgia = 0;
+        if ($order->id_makm != null) {
+            $maGiamGia = MaGiamGia::find($order->id_makm);
+            if ($maGiamGia->LoaiKM == 1) {
+                //%
+                $giamgia = ($order->TongTien * 100) / (100 - $maGiamGia->ChietKhau) - $order->TongTien;
+            }
+        }
+        $tenkh = Auth::user()->HoTen;
+        $diachi = Auth::user()->DiaChi;
+        $sdt = Auth::user()->SDT;
+        //$order_details_product = OrderDetail::with('product')->where('order_code', $checkout_code)->get();
+        $tongcong = 0;
 
-      if($order->id_makm != null){
-       $maGiamGia = MaGiamGia::find($order->id_makm);
-       if($maGiamGia->LoaiKM == 1){ //%
-        $giamgia = (($order->TongTien*100)/(100-$maGiamGia->ChietKhau)) - $order->TongTien;
-      }
+        $output = '';
 
-      }
-      $tenkh = Auth::user()->HoTen;
-      $diachi = Auth::user()->DiaChi;
-      $sdt = Auth::user()->SDT;
-      //$order_details_product = OrderDetail::with('product')->where('order_code', $checkout_code)->get();
-      $tongcong = 0;
-
-
-      $output = '';
-
-      $output.='<!DOCTYPE html><html lang="vn">
+        $output .=
+            '<!DOCTYPE html><html lang="vn">
       <head><meta charset="utf-8"></head><style type="text/css">
       body{
         font-family: DejaVu Sans;
@@ -453,15 +453,20 @@ class HoaDonController extends Controller
   </div>
   <div class="add-detail mt-10">
       <div class="w-50 float-left mt-10">
-          <p class="m-0 pt-5 text-bold w-100">Số Hóa Đơn - <span class="gray-color">#'.$order->id.'</span></p>
+          <p class="m-0 pt-5 text-bold w-100">Số Hóa Đơn - <span class="gray-color">#' .
+            $order->id .
+            '</span></p>
           <p class="m-0 pt-5 text-bold w-100">Nhà Bán Hàng: MyBook  <span class="gray-color"></span></p>
-          <p class="m-0 pt-5 text-bold w-100">Ngày Lập - <span class="gray-color">'.Carbon::createFromFormat ('Y-m-d',$order->NgayLap).'</span></p>
+          <p class="m-0 pt-5 text-bold w-100">Ngày Lập - <span class="gray-color">' .
+            Carbon::createFromFormat('Y-m-d', $order->NgayLap) .
+            '</span></p>
 
       </div>
 
       <div class="w-50 float-left logo mt-10">
 
-      <img src="user/images/logo_min.png'.'">
+      <img src="user/images/logo_min.png' .
+            '">
       </div>
       <div style="clear: both;"></div>
   </div>
@@ -474,17 +479,29 @@ class HoaDonController extends Controller
           <tr>
               <td>
                   <div class="box-text">
-                      <p>Họ Tên Người Gửi : '.$tenkh.'</p>
-                      <p>Địa Chỉ :'.$diachi.' </p>
-                      <p>Số Điện Thoại : '.$sdt.' </p>
+                      <p>Họ Tên Người Gửi : ' .
+            $tenkh .
+            '</p>
+                      <p>Địa Chỉ :' .
+            $diachi .
+            ' </p>
+                      <p>Số Điện Thoại : ' .
+            $sdt .
+            ' </p>
                   </div>
               </td>
               <td>
                   <div class="box-text">
-                      <p>Họ Tên Người Nhận : '.$order->TaiKhoan->HoTen.'</p>
-                      <p>Địa Chỉ Giao Hàng : '.$order->DiaChiGH.'</p>
+                      <p>Họ Tên Người Nhận : ' .
+            $order->TaiKhoan->HoTen .
+            '</p>
+                      <p>Địa Chỉ Giao Hàng : ' .
+            $order->DiaChiGH .
+            '</p>
 
-                      <p>Số Điện Thoại : '.$order->SDT.'</p>
+                      <p>Số Điện Thoại : ' .
+            $order->SDT .
+            '</p>
                   </div>
               </td>
           </tr>
@@ -498,13 +515,12 @@ class HoaDonController extends Controller
           </tr>
           <tr>
               <td>';
-              if($order->PhuongTTT == 1) {
-                $output .= "Ví VNPAY";
-              }else if ($order->PhuongTTT == 2) {
-                $output .= "Thanh Toán Nhận Hàng";
-              }
-              $output .=
-              '</td>
+        if ($order->PhuongTTT == 1) {
+            $output .= 'Ví VNPAY';
+        } elseif ($order->PhuongTTT == 2) {
+            $output .= 'Thanh Toán Nhận Hàng';
+        }
+        $output .= '</td>
               <td>15,000 VND</td>
           </tr>
       </table>
@@ -518,23 +534,36 @@ class HoaDonController extends Controller
               <th class="w-50">Số Lượng</th>
               <th class="w-50">Tổng Tiền</th>
           </tr>';
-          $i=1;
-          foreach($order_details as $product){
-            $tongcong += $product->SoLuong*$product->GiaBan;
-            $output .='<tr align="center">
-            <td>'.$i.'</td>
-            <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">'.$product->Sach->TenSach.'</td>
-            <td>'.number_format($product->GiaBan ,0,",",",").' VND</td>
-            <td>'.$product->SoLuong.'</td>
-            <td>'.number_format($product->SoLuong*$product->GiaBan,0,",",",").' VND</td>
+        $i = 1;
+        foreach ($order_details as $product) {
+            $tongcong += $product->SoLuong * $product->GiaBan;
+            $output .=
+                '<tr align="center">
+            <td>' .
+                $i .
+                '</td>
+            <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">' .
+                $product->Sach->TenSach .
+                '</td>
+            <td>' .
+                number_format($product->GiaBan, 0, ',', ',') .
+                ' VND</td>
+            <td>' .
+                $product->SoLuong .
+                '</td>
+            <td>' .
+                number_format($product->SoLuong * $product->GiaBan, 0, ',', ',') .
+                ' VND</td>
 
         </tr>';
-          $i++;}
-          $sotiengiam = 0;
-          if($order->id_makm != null){
-          $sotiengiam = number_format((($tongcong)/100)*$maGiamGia->ChietKhau,0,",",",");
-          }
-          $output .='
+            $i++;
+        }
+        $sotiengiam = 0;
+        if ($order->id_makm != null) {
+            $sotiengiam = number_format(($tongcong / 100) * $maGiamGia->ChietKhau, 0, ',', ',');
+        }
+        $output .=
+            '
           <tr>
               <td colspan="7">
                   <div class="total-part">
@@ -543,8 +572,12 @@ class HoaDonController extends Controller
                           <p>Tổng Cộng</p>
                       </div>
                       <div class="total-right w-15 float-left text-bold" align="right">
-                        <p>'.$sotiengiam.' VND</p>
-                          <p>'.number_format($order->TongTien,0,",",",").' VND</p>
+                        <p>' .
+            $sotiengiam .
+            ' VND</p>
+                          <p>' .
+            number_format($order->TongTien, 0, ',', ',') .
+            ' VND</p>
                       </div>
                       <div style="clear: both;"></div>
                   </div>
@@ -553,8 +586,6 @@ class HoaDonController extends Controller
       </table>
   </div></body> </html>';
 
-      return $output;
-
-
+        return $output;
     }
 }

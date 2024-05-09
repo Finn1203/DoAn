@@ -16,7 +16,7 @@ class NhaXuatBanController extends Controller
     public function index()
     {
         //
-        $nhaxuatban = NhaXuatBan::where('Xoa',0)->orderBy('id', 'desc')->paginate(12);
+        $nhaxuatban = NhaXuatBan::where('Xoa', 0)->orderBy('id', 'desc')->paginate(12);
         return View('admin.pages.NhaXuatBan.index', compact('nhaxuatban'));
     }
 
@@ -40,18 +40,17 @@ class NhaXuatBanController extends Controller
     public function store(Request $request)
     {
         //
-        $nhaxuatban = new NhaXuatBan;
+        $nhaxuatban = new NhaXuatBan();
         $this->validate($request, [
-            'tennhaxb' => 'required',        
+            'tennhaxb' => 'required',
         ]);
-        $nhaxuatban->tennhaxb=$request->tennhaxb;
-        $nhaxuatban->Xoa=0;
-        if($nhaxuatban->save())
-        {
+        $nhaxuatban->tennhaxb = $request->tennhaxb;
+        $nhaxuatban->Xoa = 0;
+        if ($nhaxuatban->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('nhaxuatban.index');
     }
 
@@ -75,7 +74,7 @@ class NhaXuatBanController extends Controller
     public function edit($id)
     {
         //
-        $nhaxuatban= NhaXuatBan::find($id);//Nhacungcap tên model      
+        $nhaxuatban = NhaXuatBan::find($id); //Nhacungcap tên model
         return view('admin.pages.NhaXuatBan.edit')->with('nhaxuatban', $nhaxuatban);
     }
 
@@ -89,20 +88,18 @@ class NhaXuatBanController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $nhaxuatban= NhaXuatBan::find($id);
-        
-        $data=$request->validate([
-            'tennhaxb' => 'required', 
-           
-        ]);    
-        
-        if($nhaxuatban->update($data))
-        { 
+        $nhaxuatban = NhaXuatBan::find($id);
+
+        $data = $request->validate([
+            'tennhaxb' => 'required',
+        ]);
+
+        if ($nhaxuatban->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('nhaxuatban.index');
     }
 

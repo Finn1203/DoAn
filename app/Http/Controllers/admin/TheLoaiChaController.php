@@ -30,7 +30,6 @@ class TheLoaiChaController extends Controller
     {
         //
         return view('admin.pages.TheLoaiCha.create');
-
     }
 
     /**
@@ -42,22 +41,19 @@ class TheLoaiChaController extends Controller
     public function store(Request $request)
     {
         //
-        $theloaicha= new TheLoaiCha;
+        $theloaicha = new TheLoaiCha();
         $this->validate($request, [
             'TenTheLoaiCha' => 'required',
-            
-            
         ]);
-       
-        $theloaicha->TenTheLoaiCha=$request->TenTheLoaiCha;
-        $theloaicha->Xoa=0;
-       
-        if($theloaicha->save())
-        {
+
+        $theloaicha->TenTheLoaiCha = $request->TenTheLoaiCha;
+        $theloaicha->Xoa = 0;
+
+        if ($theloaicha->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('theloaicha.index');
     }
 
@@ -81,7 +77,7 @@ class TheLoaiChaController extends Controller
     public function edit($id)
     {
         //
-        $theloaicha= TheLoaiCha::find($id);//Kho tên model      
+        $theloaicha = TheLoaiCha::find($id); //Kho tên model
         return view('admin.pages.TheLoaiCha.edit')->with('theloaicha', $theloaicha);
     }
 
@@ -95,20 +91,18 @@ class TheLoaiChaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $theloaicha= TheLoaiCha::find($id);
-        
-        $data=$request->validate([
+        $theloaicha = TheLoaiCha::find($id);
+
+        $data = $request->validate([
             'TenTheLoaiCha' => 'required',
-          
-        ]);    
-        
-        if($theloaicha->update($data))
-        { 
+        ]);
+
+        if ($theloaicha->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('theloaicha.index');
     }
 

@@ -45,53 +45,55 @@ class KhuyenMaiController extends Controller
         $datenow = Carbon::now('Asia/Ho_Chi_Minh')->toDateString();
         $startdate = $request['ThoiGianBD'];
         $enddate = $request['ThoiGianKT'];
-        
-        
+
         $trangthai = -1;
-        if($startdate > $enddate) //Khong hop le
-        {
-            $errors = new MessageBag(['create' => ["Ngày bắt đầu và ngày kết thúc không hợp lệ..!"]]);
-            return redirect()->route('khuyenmai.create')->withErrors($errors);          
-        } 
-        else if ($startdate > $datenow) $trangthai = 2;//chua den
-        else if ($enddate < $datenow) $trangthai = 0;//het han
-        else $trangthai = 1;//dag ap dung
-        if ($trangthai == 1)
-        {
+        if ($startdate > $enddate) {
+            //Khong hop le
+            $errors = new MessageBag(['create' => ['Ngày bắt đầu và ngày kết thúc không hợp lệ..!']]);
+            return redirect()->route('khuyenmai.create')->withErrors($errors);
+        } elseif ($startdate > $datenow) {
+            $trangthai = 2;
+        }
+        //chua den
+        elseif ($enddate < $datenow) {
+            $trangthai = 0;
+        }
+        //het han
+        else {
+            $trangthai = 1;
+        } //dag ap dung
+        if ($trangthai == 1) {
             $khuyenmai = new KhuyenMai();
             $this->validate($request, [
-                'TenCTKM'=>'required',
+                'TenCTKM' => 'required',
                 'ThoiGianBD' => 'required',
                 'ThoiGianKT' => 'required',
-                
             ]);
             // $request->image = $this->imageUpload($request);
-            $khuyenmai->TenCTKM=$request->TenCTKM;
-            $khuyenmai->ThoiGianBD=$request->ThoiGianBD;
-            $khuyenmai->ThoiGianKT=$request->ThoiGianKT;
-            $khuyenmai->ChietKhau=$request->ChietKhau;
-            $khuyenmai->TrangThai=$trangthai;
-    
-            $khuyenmai->Xoa=0;
+            $khuyenmai->TenCTKM = $request->TenCTKM;
+            $khuyenmai->ThoiGianBD = $request->ThoiGianBD;
+            $khuyenmai->ThoiGianKT = $request->ThoiGianKT;
+            $khuyenmai->ChietKhau = $request->ChietKhau;
+            $khuyenmai->TrangThai = $trangthai;
+
+            $khuyenmai->Xoa = 0;
             $khuyenmai->save();
         }
-        if ($trangthai == 2)
-        {
+        if ($trangthai == 2) {
             $khuyenmai = new KhuyenMai();
             $this->validate($request, [
-                'TenCTKM'=>'required',
+                'TenCTKM' => 'required',
                 'ThoiGianBD' => 'required',
                 'ThoiGianKT' => 'required',
-                
             ]);
             // $request->image = $this->imageUpload($request);
-            $khuyenmai->TenCTKM=$request->TenCTKM;
-            $khuyenmai->ThoiGianBD=$request->ThoiGianBD;
-            $khuyenmai->ThoiGianKT=$request->ThoiGianKT;
-            $khuyenmai->ChietKhau=$request->ChietKhau;
-            $khuyenmai->TrangThai=$trangthai;
-    
-            $khuyenmai->Xoa=0;
+            $khuyenmai->TenCTKM = $request->TenCTKM;
+            $khuyenmai->ThoiGianBD = $request->ThoiGianBD;
+            $khuyenmai->ThoiGianKT = $request->ThoiGianKT;
+            $khuyenmai->ChietKhau = $request->ChietKhau;
+            $khuyenmai->TrangThai = $trangthai;
+
+            $khuyenmai->Xoa = 0;
             $khuyenmai->save();
         }
         return redirect()->route('khuyenmai.index');
@@ -117,7 +119,7 @@ class KhuyenMaiController extends Controller
     public function edit($id)
     {
         //
-        $khuyenmai= KhuyenMai::find($id);//Kho tên model      
+        $khuyenmai = KhuyenMai::find($id); //Kho tên model
         return view('admin.pages.KhuyenMai.edit')->with('khuyenmai', $khuyenmai);
     }
 
@@ -131,23 +133,21 @@ class KhuyenMaiController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $khuyenmai= KhuyenMai::find($id);
-        
-        $data=$request->validate([
+        $khuyenmai = KhuyenMai::find($id);
+
+        $data = $request->validate([
             'TenCTKM' => 'required',
             'ThoiGianBD' => 'required',
             'ThoiGianKT' => 'required',
             'ChietKhau' => 'required',
-          
-        ]);    
-        
-        if($khuyenmai->update($data))
-        { 
+        ]);
+
+        if ($khuyenmai->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('khuyenmai.index');
     }
 

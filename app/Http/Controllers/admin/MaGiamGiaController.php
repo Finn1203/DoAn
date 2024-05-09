@@ -16,7 +16,7 @@ class MaGiamGiaController extends Controller
     public function index()
     {
         //
-        $magiamgia= MaGiamGia::where('Xoa',0)->orderBy('created_at', 'desc')->get();
+        $magiamgia = MaGiamGia::where('Xoa', 0)->orderBy('created_at', 'desc')->get();
         return View('admin.pages.MaGiamGia.index', compact('magiamgia'));
     }
 
@@ -40,7 +40,7 @@ class MaGiamGiaController extends Controller
     public function store(Request $request)
     {
         //
-        $magiamgia = new MaGiamGia;
+        $magiamgia = new MaGiamGia();
         $this->validate($request, [
             'Code' => 'required',
             'SoLuong' => 'required',
@@ -48,23 +48,22 @@ class MaGiamGiaController extends Controller
             'LoaiKM' => 'required',
             'NgayBĐ' => 'required',
             'NgayKT' => 'required',
-            'TrangThai'=> 'required',
+            'TrangThai' => 'required',
         ]);
-        $magiamgia->Code=$request->Code;
-        $magiamgia->SoLuong=$request->SoLuong;
-        $magiamgia->ChietKhau=$request->ChietKhau;
-        $magiamgia->LoaiKM=$request->LoaiKM;
-        $magiamgia->NgayBĐ=$request->NgayBĐ;
-        $magiamgia->NgayKT=$request->NgayKT;
-        $magiamgia->TrangThai=$request->TrangThai;
-        $magiamgia->Xoa=0;
-        if($magiamgia->save())
-        {
+        $magiamgia->Code = $request->Code;
+        $magiamgia->SoLuong = $request->SoLuong;
+        $magiamgia->ChietKhau = $request->ChietKhau;
+        $magiamgia->LoaiKM = $request->LoaiKM;
+        $magiamgia->NgayBĐ = $request->NgayBĐ;
+        $magiamgia->NgayKT = $request->NgayKT;
+        $magiamgia->TrangThai = $request->TrangThai;
+        $magiamgia->Xoa = 0;
+        if ($magiamgia->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
-    
+        }
+
         return redirect()->route('magiamgia.index');
     }
 
@@ -88,7 +87,7 @@ class MaGiamGiaController extends Controller
     public function edit($id)
     {
         //
-        $magiamgia= MaGiamGia::find($id);//Kho tên model      
+        $magiamgia = MaGiamGia::find($id); //Kho tên model
         return view('admin.pages.MaGiamGia.edit')->with('magiamgia', $magiamgia);
     }
 
@@ -102,20 +101,18 @@ class MaGiamGiaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $magiamgia= MaGiamGia::find($id);
-        
-        $data=$request->validate([
-            'TrangThai'=> 'required',
-          
-        ]);    
-        
-        if($magiamgia->update($data))
-        { 
+        $magiamgia = MaGiamGia::find($id);
+
+        $data = $request->validate([
+            'TrangThai' => 'required',
+        ]);
+
+        if ($magiamgia->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('magiamgia.index');
     }
 

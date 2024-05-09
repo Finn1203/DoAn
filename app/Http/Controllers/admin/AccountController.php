@@ -40,12 +40,13 @@ class AccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function imageUpload(Request $request){
-        if($request->hasFile('AnhDaiDien')){
-            if($request->file('AnhDaiDien')->isValid()){
-                $request->validate(['AnhDaiDien'=>'required|image|mimes:jpeg,jpg,png|max:2048',]);
-                $imageName = time().'.'.$request->AnhDaiDien->extension();
-                $request->AnhDaiDien->move(public_path('image'),$imageName);
+    public function imageUpload(Request $request)
+    {
+        if ($request->hasFile('AnhDaiDien')) {
+            if ($request->file('AnhDaiDien')->isValid()) {
+                $request->validate(['AnhDaiDien' => 'required|image|mimes:jpeg,jpg,png|max:2048']);
+                $imageName = time() . '.' . $request->AnhDaiDien->extension();
+                $request->AnhDaiDien->move(public_path('image'), $imageName);
                 return $imageName;
             }
         }
@@ -58,29 +59,29 @@ class AccountController extends Controller
         $taikhoan = new User();
         $this->validate($request, [
             'HoTen' => 'required',
-            'password'=> 'required',
-            'Email'=> 'required',
-            'DiaChi'=> 'required',
-            'SDT'=> 'required',
-            'LoaiTK'=> 'required',
-            'AnhDaiDien'=> 'required',
-            'TrangThai'=> 'required',
+            'password' => 'required',
+            'Email' => 'required',
+            'DiaChi' => 'required',
+            'SDT' => 'required',
+            'LoaiTK' => 'required',
+            'AnhDaiDien' => 'required',
+            'TrangThai' => 'required',
         ]);
         // $request->image = $this->imageUpload($request);
-        $taikhoan->HoTen=$request->HoTen;
-        $taikhoan->password=Hash::make($request->password);
-        $taikhoan->Email=$request->Email;
-        $taikhoan->DiaChi=$request->DiaChi;
-        $taikhoan->SDT=$request->SDT;
-        $taikhoan->LoaiTK=$request->LoaiTK;
-        $taikhoan->AnhDaiDien=$this->imageUpload($request);
-        $taikhoan->TrangThai=$request->TrangThai;
-        $taikhoan->Xoa=0;
-        if($taikhoan->save())
-        {
+        $taikhoan->HoTen = $request->HoTen;
+        $taikhoan->password = Hash::make($request->password);
+        $taikhoan->Email = $request->Email;
+        $taikhoan->DiaChi = $request->DiaChi;
+        $taikhoan->SDT = $request->SDT;
+        $taikhoan->LoaiTK = $request->LoaiTK;
+        $taikhoan->AnhDaiDien = $this->imageUpload($request);
+        $taikhoan->TrangThai = $request->TrangThai;
+        $taikhoan->Xoa = 0;
+        if ($taikhoan->save()) {
             Session::flash('message', 'Thêm Thành Công!');
-        }else
+        } else {
             Session::flash('message', 'Thêm Thất Bại!');
+        }
         return redirect()->route('taikhoan.index');
     }
 
@@ -104,7 +105,7 @@ class AccountController extends Controller
     public function edit($id)
     {
         //
-        $taikhoan= User::find($id);
+        $taikhoan = User::find($id);
         return view('admin.pages.TaiKhoan.edit')->with('taikhoan', $taikhoan);
     }
 
@@ -118,31 +119,35 @@ class AccountController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $taikhoan= User::find($id);
-        $data=$request->validate([
+        $taikhoan = User::find($id);
+        $data = $request->validate([
             'HoTen' => 'required',
-            'Email'=> 'required',
-            'LoaiTK'=> 'required',
-            'TrangThai'=> 'required',
-           
-        ]);  
-        if ($request->AnhDaiDien == null) $imageName = $taikhoan->AnhDaiDien;
-        else 
-        $data['AnhDaiDien']=$this->imageUpload($request);
-        //
-        if ($request->SDT == null) $sdt = $taikhoan->NULL;
-        else 
-        $data['SDT']=$request->SDT;
-        //
-        if ($request->DiaChi == null) $diachi = $taikhoan->NULL;
-        else 
-        $data['DiaChi']=$request->DiaChi;
-        if($taikhoan->update($data))
-        {
-            Session::flash('message', 'Cập nhật thành công!');
+            'Email' => 'required',
+            'LoaiTK' => 'required',
+            'TrangThai' => 'required',
+        ]);
+        if ($request->AnhDaiDien == null) {
+            $imageName = $taikhoan->AnhDaiDien;
+        } else {
+            $data['AnhDaiDien'] = $this->imageUpload($request);
         }
-        else
+        //
+        if ($request->SDT == null) {
+            $sdt = $taikhoan->NULL;
+        } else {
+            $data['SDT'] = $request->SDT;
+        }
+        //
+        if ($request->DiaChi == null) {
+            $diachi = $taikhoan->NULL;
+        } else {
+            $data['DiaChi'] = $request->DiaChi;
+        }
+        if ($taikhoan->update($data)) {
+            Session::flash('message', 'Cập nhật thành công!');
+        } else {
             Session::flash('message', 'Cập Nhật Thất Bại!');
+        }
         return redirect()->route('taikhoan.index');
     }
 
@@ -165,9 +170,9 @@ class AccountController extends Controller
     }
     public function search(Request $request)
     {
-        $taikhoan = User::where([ ['HoTen','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
-                    ->orwhere([ ['Email','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
-                    ->paginate(5);
-        return View('admin.pages.TaiKhoan.index', ['taikhoan'=>$taikhoan]);
+        $taikhoan = User::where([['HoTen', 'like', '%' . $request->bookName . '%'], ['Xoa', '=', '0']])
+            ->orwhere([['Email', 'like', '%' . $request->bookName . '%'], ['Xoa', '=', '0']])
+            ->paginate(5);
+        return View('admin.pages.TaiKhoan.index', ['taikhoan' => $taikhoan]);
     }
 }

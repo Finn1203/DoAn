@@ -19,7 +19,7 @@ class TheLoaiSachController extends Controller
      */
     public function index()
     {
-        $theloaisach = TheLoaiSach::where('Xoa',0)->orderBy('created_at', 'desc')->paginate(12);
+        $theloaisach = TheLoaiSach::where('Xoa', 0)->orderBy('created_at', 'desc')->paginate(12);
         return View('admin.pages.TheLoaiSach.index', compact('theloaisach'));
     }
 
@@ -30,9 +30,9 @@ class TheLoaiSachController extends Controller
      */
     public function create()
     {
-        $sach = Sach::where('Xoa',0)->get();
+        $sach = Sach::where('Xoa', 0)->get();
         $theloai = TheLoai::all();
-        return view('admin.pages.TheLoaiSach.create',['sach'=>$sach],['theloai'=>$theloai]);
+        return view('admin.pages.TheLoaiSach.create', ['sach' => $sach], ['theloai' => $theloai]);
     }
 
     /**
@@ -43,21 +43,19 @@ class TheLoaiSachController extends Controller
      */
     public function store(Request $request)
     {
-        $theloaisach = new TheLoaiSach;
+        $theloaisach = new TheLoaiSach();
         $this->validate($request, [
             'IdSach' => 'required',
             'IdTheLoai' => 'required',
-
         ]);
-        $theloaisach->IdSach=$request->IdSach;
-        $theloaisach->IdTheLoai=$request->IdTheLoai;
-        $theloaisach->Xoa=0;
-        if($theloaisach->save())
-        {
+        $theloaisach->IdSach = $request->IdSach;
+        $theloaisach->IdTheLoai = $request->IdTheLoai;
+        $theloaisach->Xoa = 0;
+        if ($theloaisach->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('theloaisach.index');
     }
 
@@ -81,10 +79,10 @@ class TheLoaiSachController extends Controller
     public function edit($id)
     {
         //
-        $sach = Sach::where('Xoa',0)->get();
+        $sach = Sach::where('Xoa', 0)->get();
         $theloai = TheLoai::all();
-        $theloaisach= TheLoaiSach::find($id);//Nhacungcap tên model      
-        return view('admin.pages.TheLoaiSach.edit')->with('theloaisach', $theloaisach)->with('theloai',$theloai)->with('sach',$sach);
+        $theloaisach = TheLoaiSach::find($id); //Nhacungcap tên model
+        return view('admin.pages.TheLoaiSach.edit')->with('theloaisach', $theloaisach)->with('theloai', $theloai)->with('sach', $sach);
     }
 
     /**
@@ -97,20 +95,19 @@ class TheLoaiSachController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $theloaisach= TheLoaiSach::find($id);
-        
-        $data=$request->validate([
+        $theloaisach = TheLoaiSach::find($id);
+
+        $data = $request->validate([
             'IdTheLoai' => 'required',
             'IdSach' => 'required',
-        ]);    
-        
-        if($theloaisach->update($data))
-        { 
+        ]);
+
+        if ($theloaisach->update($data)) {
             Session::flash('message', 'Cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('theloaisach.index');
     }
 
@@ -123,7 +120,8 @@ class TheLoaiSachController extends Controller
     public function destroy($id)
     {
         //
-    } public function delete(Request $request, $id)
+    }
+    public function delete(Request $request, $id)
     {
         $theloaisach = TheLoaiSach::find($id);
         $theloaisach->Xoa = 1;

@@ -130,7 +130,7 @@
 								<!-- Hình ảnh -->
 								<div class="men-thumb-item" >
 									<a href="" target="_blank">
-									<img  style=" width: fit-content;height:200px;object-fit: contain" src="{!! asset('user/images/banner-tintuc-Phithu.jpg')!!}" class="img-fluid" alt="" >
+									<img  style=" width: fit-content;height:200px;object-fit: contain" src="{!! asset('user/images/banner-tintuc-trungthu.jpg')!!}" class="img-fluid" alt="" >
 									</a>
 
 									<span class="product-new-top" style="background-color: #FFC107;">Khuyến Mãi</span>

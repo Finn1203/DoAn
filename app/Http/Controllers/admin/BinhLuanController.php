@@ -96,7 +96,8 @@ class BinhLuanController extends Controller
         $binhluan->save();
         return redirect()->back();
     }
-    public function allow_comment(Request $request){
+    public function allow_comment(Request $request)
+    {
         $data = $request->all();
         $comment = BinhLuan::find($data['comment_id']);
         $comment->Duyet = $data['comment_status'];

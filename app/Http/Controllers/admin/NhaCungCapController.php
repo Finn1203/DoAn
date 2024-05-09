@@ -16,7 +16,7 @@ class NhaCungCapController extends Controller
      */
     public function index()
     {
-        $nhacungcap = NhaCungCap::where('Xoa',0)->orderBy('created_at', 'desc')->paginate(12);
+        $nhacungcap = NhaCungCap::where('Xoa', 0)->orderBy('created_at', 'desc')->paginate(12);
         return View('admin.pages.NhaCungCap.index', compact('nhacungcap'));
     }
 
@@ -38,26 +38,25 @@ class NhaCungCapController extends Controller
      */
     public function store(Request $request)
     {
-        $nhacungcap = new NhaCungCap;
+        $nhacungcap = new NhaCungCap();
         $this->validate($request, [
             'TenNCC' => 'required',
             'DiaChi' => 'required',
             'SDT' => 'required',
             'Email' => 'required',
-            'TrangThai' => 'required',         
+            'TrangThai' => 'required',
         ]);
-        $nhacungcap->TenNCC=$request->TenNCC;
-        $nhacungcap->DiaChi=$request->DiaChi;
-        $nhacungcap->SDT=$request->SDT;
-        $nhacungcap->Email=$request->Email;
-        $nhacungcap->TrangThai=$request->TrangThai;
-        $nhacungcap->Xoa=0;
-        if($nhacungcap->save())
-        {
+        $nhacungcap->TenNCC = $request->TenNCC;
+        $nhacungcap->DiaChi = $request->DiaChi;
+        $nhacungcap->SDT = $request->SDT;
+        $nhacungcap->Email = $request->Email;
+        $nhacungcap->TrangThai = $request->TrangThai;
+        $nhacungcap->Xoa = 0;
+        if ($nhacungcap->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('nhacungcap.index');
     }
 
@@ -80,9 +79,8 @@ class NhaCungCapController extends Controller
      */
     public function edit($id)
     {
-        $nhacungcap= NhaCungCap::find($id);//Nhacungcap tên model      
+        $nhacungcap = NhaCungCap::find($id); //Nhacungcap tên model
         return view('admin.pages.NhaCungCap.edit')->with('nhacungcap', $nhacungcap);
-
     }
 
     /**
@@ -94,25 +92,23 @@ class NhaCungCapController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $nhacungcap= NhaCungCap::find($id);
-        
-        $data=$request->validate([
+        $nhacungcap = NhaCungCap::find($id);
+
+        $data = $request->validate([
             'TenNCC' => 'required',
             'DiaChi' => 'required',
             'SDT' => 'required',
             'Email' => 'required',
-            'TrangThai' => 'required',  
-        ]);    
-        
-        if($nhacungcap->update($data))
-        { 
-            Session::flash('message', 'cập nhật thành công!');
-        }
-        else
-            Session::flash('message', 'cập nhật thất bại!');
-            
-        return redirect()->route('nhacungcap.index');
+            'TrangThai' => 'required',
+        ]);
 
+        if ($nhacungcap->update($data)) {
+            Session::flash('message', 'cập nhật thành công!');
+        } else {
+            Session::flash('message', 'cập nhật thất bại!');
+        }
+
+        return redirect()->route('nhacungcap.index');
     }
 
     /**
@@ -134,8 +130,7 @@ class NhaCungCapController extends Controller
     }
     public function search(Request $request)
     {
-        $nhacungcap = NhaCungCap::where([ ['TenNCC','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
-                    ->paginate(5);
-        return View('admin.pages.NhaCungCap.index', ['nhacungcap'=>$nhacungcap]);
+        $nhacungcap = NhaCungCap::where([['TenNCC', 'like', '%' . $request->bookName . '%'], ['Xoa', '=', '0']])->paginate(5);
+        return View('admin.pages.NhaCungCap.index', ['nhacungcap' => $nhacungcap]);
     }
 }

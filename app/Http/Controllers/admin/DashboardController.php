@@ -20,51 +20,49 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $currentMonth =  Carbon::now('Asia/Ho_Chi_Minh')->format('m/Y');
-        $currentDate =  Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $currentMonth = Carbon::now('Asia/Ho_Chi_Minh')->format('m/Y');
+        $currentDate = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         $dateFirstOfMonth = Carbon::now()->year;
-        $dateFirstOfYear = Carbon::now()->year."-01-01";
-        if(Carbon::now()->month<10){
-            $dateFirstOfMonth .="-0".Carbon::now()->month.'-01';
-        }else $dateFirstOfMonth .="-".Carbon::now()->month.'-01';
+        $dateFirstOfYear = Carbon::now()->year . '-01-01';
+        if (Carbon::now()->month < 10) {
+            $dateFirstOfMonth .= '-0' . Carbon::now()->month . '-01';
+        } else {
+            $dateFirstOfMonth .= '-' . Carbon::now()->month . '-01';
+        }
 
         //thong ke don hang va doanh thu
-        $bills= HoaDonBan::where("NgayLap",">=", $dateFirstOfMonth)->where("NgayLap","<=", $currentDate)->get();
-       
+        $bills = HoaDonBan::where('NgayLap', '>=', $dateFirstOfMonth)->where('NgayLap', '<=', $currentDate)->get();
+
         $totalBillInMonth = count($bills);
         $totalMoneyInMonth = 0;
-        foreach($bills as $bill){
-            if($bill->TrangThai == 2){
+        foreach ($bills as $bill) {
+            if ($bill->TrangThai == 2) {
                 $totalMoneyInMonth += $bill->TongTien;
             }
         }
-        $sach=Sach::orderby('id','desc')->where('TrangThai',1)->where('Xoa',0)->get();
+        $sach = Sach::orderby('id', 'desc')->where('TrangThai', 1)->where('Xoa', 0)->get();
         $app_product = Sach::all()->count();
         //thong ke thanh vien
-        $accounts= User::whereDate("created_at",">=", $dateFirstOfMonth)->whereDate("created_at","<=", $currentDate)->get();
-    
+        $accounts = User::whereDate('created_at', '>=', $dateFirstOfMonth)->whereDate('created_at', '<=', $currentDate)->get();
+
         $totalAccountInMonth = count($accounts);
-        $years=HoaDonBan::select(DB::raw("Year(NgayLap) as year"))->where('TrangThai','=',2)->groupBy(DB::raw("Year(NgayLap)"))->pluck('year');
-        $incomes=HoaDonBan::select(DB::raw("SUM(TongTien) as sum"))->where('TrangThai','=',2)->groupBy(DB::raw("Year(NgayLap)"))->pluck('sum');
-        $datas= array();
-       
-   
-        if(count($incomes)>0){
-            foreach($years as $index =>$year)
-            {
-               
-                $datas[$year]=$incomes[$index];
-      
+        $years = HoaDonBan::select(DB::raw('Year(NgayLap) as year'))->where('TrangThai', '=', 2)->groupBy(DB::raw('Year(NgayLap)'))->pluck('year');
+        $incomes = HoaDonBan::select(DB::raw('SUM(TongTien) as sum'))->where('TrangThai', '=', 2)->groupBy(DB::raw('Year(NgayLap)'))->pluck('sum');
+        $datas = [];
+
+        if (count($incomes) > 0) {
+            foreach ($years as $index => $year) {
+                $datas[$year] = $incomes[$index];
             }
-         }
-       
-        $ttHuy=HoaDonBan::where('TrangThai',0)->count();
-        $ttDonmoi=HoaDonBan::where('TrangThai',1)->count();
-        $ttDuyetdon=HoaDonBan::where('TrangThai',3)->count();
-        $ttGiaoThanhcong=HoaDonBan::where('TrangThai',2)->count();
-        $ttVanchuyen=HoaDonBan::where('TrangThai',4)->count();
+        }
+
+        $ttHuy = HoaDonBan::where('TrangThai', 0)->count();
+        $ttDonmoi = HoaDonBan::where('TrangThai', 1)->count();
+        $ttDuyetdon = HoaDonBan::where('TrangThai', 3)->count();
+        $ttGiaoThanhcong = HoaDonBan::where('TrangThai', 2)->count();
+        $ttVanchuyen = HoaDonBan::where('TrangThai', 4)->count();
         // dd($ttVanchuyen);
-        return view('admin.pages.dashboard',compact('ttDonmoi','ttDuyetdon','ttGiaoThanhcong','ttVanchuyen','ttHuy','totalMoneyInMonth','totalAccountInMonth','totalBillInMonth','app_product','datas'));
+        return view('admin.pages.dashboard', compact('ttDonmoi', 'ttDuyetdon', 'ttGiaoThanhcong', 'ttVanchuyen', 'ttHuy', 'totalMoneyInMonth', 'totalAccountInMonth', 'totalBillInMonth', 'app_product', 'datas'));
     }
 
     /**
@@ -132,7 +130,7 @@ class DashboardController extends Controller
     {
         //
     }
-    public function logout(){
-
+    public function logout()
+    {
     }
 }

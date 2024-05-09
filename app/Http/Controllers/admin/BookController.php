@@ -34,19 +34,20 @@ class BookController extends Controller
      */
     public function create()
     {
-        $km = KhuyenMai::where('TrangThai',1)->where('Xoa',0)->get();
-        $nhacc = NhaCungCap::where('TrangThai',1)->where('Xoa',0)->get();
+        $km = KhuyenMai::where('TrangThai', 1)->where('Xoa', 0)->get();
+        $nhacc = NhaCungCap::where('TrangThai', 1)->where('Xoa', 0)->get();
         $nhaxuatban = NhaXuatBan::where('Xoa', 0)->get();
         $tacgia = TacGia::where('Xoa', 0)->get();
         $kichthuoc = KichThuoc::where('Xoa', 0)->get();
-        return view('admin.pages.Book.create', compact('nhacc', 'nhaxuatban', 'km','tacgia','kichthuoc'));
+        return view('admin.pages.Book.create', compact('nhacc', 'nhaxuatban', 'km', 'tacgia', 'kichthuoc'));
     }
-    public function imageUpload(Request $request){
-        if($request->hasFile('AnhSach')){
-            if($request->file('AnhSach')->isValid()){
-                $request->validate(['AnhSach'=>'required|image|mimes:jpeg,jpg,png|max:2048',]);
-                $imageName = time().'.'.$request->AnhSach->extension();
-                $request->AnhSach->move(public_path('image'),$imageName);
+    public function imageUpload(Request $request)
+    {
+        if ($request->hasFile('AnhSach')) {
+            if ($request->file('AnhSach')->isValid()) {
+                $request->validate(['AnhSach' => 'required|image|mimes:jpeg,jpg,png|max:2048']);
+                $imageName = time() . '.' . $request->AnhSach->extension();
+                $request->AnhSach->move(public_path('image'), $imageName);
                 return $imageName;
             }
         }
@@ -60,8 +61,8 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $sach = new Sach;
-       // dd($request);dd($request);
+        $sach = new Sach();
+        // dd($request);dd($request);
         $this->validate($request, [
             'TenSach' => 'required',
             'AnhSach' => 'required',
@@ -71,39 +72,35 @@ class BookController extends Controller
             'SoTrang' => 'required',
             'NamXB' => 'required',
             'GiaTien' => 'required',
-            'DichGia'=>'required',
-            'KichThuoc'=>'required',
+            'DichGia' => 'required',
+            'KichThuoc' => 'required',
             'MoTa' => 'required',
             'IdKM' => 'required',
-            'TrangThai'=>'required',
-
+            'TrangThai' => 'required',
         ]);
-        
-        $sach->TenSach=$request->TenSach;
-        $sach->AnhSach=$this->imageUpload($request);
-        $sach->NhaXuatBan=$request->NhaXuatBan;
-        $sach->IdNCC=$request->IdNCC;
-        $sach->LoaiBia=$request->LoaiBia;
-        $sach->SoTrang=$request->SoTrang;
-        
-        $sach->GiaTien=$request->GiaTien;
-        $sach->DichGia=$request->DichGia;
-        $sach->NamXB=$request->NamXB;
-        $sach->KichThuoc=$request->KichThuoc;
-        $sach->MoTa=$request->MoTa;
-        if(empty($request->check)){
-        $sach->IdKM=$request->IdKM;
-    }
-        
-        $sach->TrangThai=$request->TrangThai;
-        $sach->Xoa=0;
-        if($sach->save())
-        {
-            Session::flash('message','thêm sản phẩm thành công');
+
+        $sach->TenSach = $request->TenSach;
+        $sach->AnhSach = $this->imageUpload($request);
+        $sach->NhaXuatBan = $request->NhaXuatBan;
+        $sach->IdNCC = $request->IdNCC;
+        $sach->LoaiBia = $request->LoaiBia;
+        $sach->SoTrang = $request->SoTrang;
+
+        $sach->GiaTien = $request->GiaTien;
+        $sach->DichGia = $request->DichGia;
+        $sach->NamXB = $request->NamXB;
+        $sach->KichThuoc = $request->KichThuoc;
+        $sach->MoTa = $request->MoTa;
+        if (empty($request->check)) {
+            $sach->IdKM = $request->IdKM;
         }
-        else
-        {
-        Session::flash('message','thêm sản phẩm thất bại');
+
+        $sach->TrangThai = $request->TrangThai;
+        $sach->Xoa = 0;
+        if ($sach->save()) {
+            Session::flash('message', 'thêm sản phẩm thành công');
+        } else {
+            Session::flash('message', 'thêm sản phẩm thất bại');
         }
         return redirect()->route('sach.index');
     }
@@ -127,13 +124,13 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $sach= Sach::find($id);//Nhacungcap tên model      
-        $km = KhuyenMai::where('TrangThai',1)->where('Xoa',0)->get();
-        $nhacc = NhaCungCap::where('TrangThai',1)->where('Xoa',0)->get();
-        $nhaxb = NhaXuatBan::where('Xoa',0)->get();
-        $tacgia = TacGia::where('Xoa',0)->get();
-        $kichthuoc= KichThuoc::where('Xoa',0)->get();
-        return view('admin.pages.Book.edit',$sach,['nhacc'=>$nhacc,'km'=>$km,'nhaxb'=>$nhaxb,'tacgia'=>$tacgia,'kichthuoc'=>$kichthuoc])->with('sach', $sach);
+        $sach = Sach::find($id); //Nhacungcap tên model
+        $km = KhuyenMai::where('TrangThai', 1)->where('Xoa', 0)->get();
+        $nhacc = NhaCungCap::where('TrangThai', 1)->where('Xoa', 0)->get();
+        $nhaxb = NhaXuatBan::where('Xoa', 0)->get();
+        $tacgia = TacGia::where('Xoa', 0)->get();
+        $kichthuoc = KichThuoc::where('Xoa', 0)->get();
+        return view('admin.pages.Book.edit', $sach, ['nhacc' => $nhacc, 'km' => $km, 'nhaxb' => $nhaxb, 'tacgia' => $tacgia, 'kichthuoc' => $kichthuoc])->with('sach', $sach);
     }
 
     /**
@@ -146,7 +143,7 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $sach = Sach::find($id);
-        $data=$request->validate([
+        $data = $request->validate([
             'TenSach' => 'required',
             'NhaXuatBan' => 'required',
             'IdNCC' => 'required',
@@ -154,25 +151,23 @@ class BookController extends Controller
             'SoTrang' => 'required',
             'NamXB' => 'required',
             'GiaTien' => 'required',
-            'DichGia'=>'required',
-            'KichThuoc'=>'required',
+            'DichGia' => 'required',
+            'KichThuoc' => 'required',
             'IdKM' => 'required',
-            'TrangThai'=>'required',
-        ]);  
-    
-        if ($request->AnhSach == null) $imageName = $sach->AnhSach;
-        else 
-        $data['AnhSach']=$this->imageUpload($request);
-        
-       
-        //if(Category::create($request->all()))
-        if($sach->update($data))
-        { 
-            Session::flash('message','cập nhật sản phẩm thành công');
+            'TrangThai' => 'required',
+        ]);
+
+        if ($request->AnhSach == null) {
+            $imageName = $sach->AnhSach;
+        } else {
+            $data['AnhSach'] = $this->imageUpload($request);
         }
-        else
-        {
-             Session::flash('message','cập nhật sản phẩm thất bại');
+
+        //if(Category::create($request->all()))
+        if ($sach->update($data)) {
+            Session::flash('message', 'cập nhật sản phẩm thành công');
+        } else {
+            Session::flash('message', 'cập nhật sản phẩm thất bại');
         }
 
         return redirect()->route('sach.index');
@@ -193,14 +188,12 @@ class BookController extends Controller
     }
     public function destroy($id)
     {
-       
     }
     public function search(Request $request)
     {
-        $sach = Sach::where([ ['TenSach','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
-                    ->orwhere([ ['DichGia','like','%'.$request->bookName.'%'],['Xoa', '=', '0'] ])
-                    ->paginate(5);
-        return View('admin.pages.Book.index', ['sach'=>$sach]);
+        $sach = Sach::where([['TenSach', 'like', '%' . $request->bookName . '%'], ['Xoa', '=', '0']])
+            ->orwhere([['DichGia', 'like', '%' . $request->bookName . '%'], ['Xoa', '=', '0']])
+            ->paginate(5);
+        return View('admin.pages.Book.index', ['sach' => $sach]);
     }
-
 }

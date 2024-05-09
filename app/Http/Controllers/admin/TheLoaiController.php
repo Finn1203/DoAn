@@ -18,10 +18,9 @@ class TheLoaiController extends Controller
      */
     public function index()
     {
-        
         $theloai = TheLoai::where('Xoa', 0)->orderBy('created_at', 'desc')->paginate(12);
-        $theloaicha = TheLoaiCha::where('Xoa',0)->get();
-        return View('admin.pages.TheLoai.index', compact('theloai','theloaicha'));
+        $theloaicha = TheLoaiCha::where('Xoa', 0)->get();
+        return View('admin.pages.TheLoai.index', compact('theloai', 'theloaicha'));
     }
 
     /**
@@ -31,10 +30,10 @@ class TheLoaiController extends Controller
      */
     public function create()
     {
-        $theloaicha= TheLoaiCha::all();
-        return view('admin.pages.TheLoai.create',compact('theloaicha'));
+        $theloaicha = TheLoaiCha::all();
+        return view('admin.pages.TheLoai.create', compact('theloaicha'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,21 +42,19 @@ class TheLoaiController extends Controller
      */
     public function store(Request $request)
     {
-        $theloai = new TheLoai;
+        $theloai = new TheLoai();
         $this->validate($request, [
             'TenTheLoai' => 'required',
             'TenTLCha' => 'required',
-            
         ]);
-        $theloai->TenTheLoai=$request->TenTheLoai;
-        $theloai->TenTLCha=$request->TenTLCha;
-        $theloai->Xoa=0;
-        if($theloai->save())
-        {
+        $theloai->TenTheLoai = $request->TenTheLoai;
+        $theloai->TenTLCha = $request->TenTLCha;
+        $theloai->Xoa = 0;
+        if ($theloai->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('theloai.index');
     }
 
@@ -80,10 +77,9 @@ class TheLoaiController extends Controller
      */
     public function edit($id)
     {
-        
-        $theloai= TheLoai::find($id);//Nhacungcap tên model      
-         $theloaicha= TheLoaiCha::all();
-        return view('admin.pages.TheLoai.edit',['theloaicha'=>$theloaicha])->with('theloai', $theloai);
+        $theloai = TheLoai::find($id); //Nhacungcap tên model
+        $theloaicha = TheLoaiCha::all();
+        return view('admin.pages.TheLoai.edit', ['theloaicha' => $theloaicha])->with('theloai', $theloai);
     }
 
     /**
@@ -95,20 +91,19 @@ class TheLoaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $theloai= TheLoai::find($id);
-        
-        $data=$request->validate([
+        $theloai = TheLoai::find($id);
+
+        $data = $request->validate([
             'TenTheLoai' => 'required',
-            'TenTLCha'=>'required',
-        ]);    
-        
-        if($theloai->update($data))
-        { 
+            'TenTLCha' => 'required',
+        ]);
+
+        if ($theloai->update($data)) {
             Session::flash('message', 'Cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('theloai.index');
     }
 
@@ -118,10 +113,9 @@ class TheLoaiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
     public function destroy($id)
     {
-       
     }
     public function delete(Request $request, $id)
     {

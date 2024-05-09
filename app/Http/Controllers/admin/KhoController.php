@@ -29,8 +29,8 @@ class KhoController extends Controller
     public function create()
     {
         //
-        $sach = Sach::where('Xoa',0)->get();
-        return view('admin.pages.Kho.create',['sach'=>$sach]);
+        $sach = Sach::where('Xoa', 0)->get();
+        return view('admin.pages.Kho.create', ['sach' => $sach]);
     }
 
     /**
@@ -42,23 +42,21 @@ class KhoController extends Controller
     public function store(Request $request)
     {
         //
-        
-        $kho = new Kho;
+
+        $kho = new Kho();
         $this->validate($request, [
             'IdSach' => 'required',
             'SoLuongTon' => 'required',
-                  
         ]);
-        $kho->IdSach=$request->IdSach;
-        $kho->SoLuongTon=$request->SoLuongTon;
-        $kho->Xoa=0;
-        if($kho->save())
-        {
+        $kho->IdSach = $request->IdSach;
+        $kho->SoLuongTon = $request->SoLuongTon;
+        $kho->Xoa = 0;
+        if ($kho->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
-    
+        }
+
         return redirect()->route('kho.index');
     }
 
@@ -82,7 +80,7 @@ class KhoController extends Controller
     public function edit($id)
     {
         //
-        $kho= Kho::find($id);//Kho tên model      
+        $kho = Kho::find($id); //Kho tên model
         return view('admin.pages.Kho.edit')->with('kho', $kho);
     }
 
@@ -96,20 +94,18 @@ class KhoController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $kho= Kho::find($id);
-        
-        $data=$request->validate([
+        $kho = Kho::find($id);
+
+        $data = $request->validate([
             'SoLuongTon' => 'required',
-          
-        ]);    
-        
-        if($kho->update($data))
-        { 
+        ]);
+
+        if ($kho->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('kho.index');
     }
 

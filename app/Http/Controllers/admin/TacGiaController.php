@@ -16,7 +16,7 @@ class TacGiaController extends Controller
     public function index()
     {
         //
-        $tacgia = TacGia::where('Xoa',0)->orderBy('id', 'desc')->paginate(12);
+        $tacgia = TacGia::where('Xoa', 0)->orderBy('id', 'desc')->paginate(12);
         return View('admin.pages.TacGia.index', compact('tacgia'));
     }
 
@@ -40,18 +40,17 @@ class TacGiaController extends Controller
     public function store(Request $request)
     {
         //
-        $tacgia = new TacGia;
+        $tacgia = new TacGia();
         $this->validate($request, [
-            'tentacgia' => 'required',        
+            'tentacgia' => 'required',
         ]);
-        $tacgia->tentacgia=$request->tentacgia;
-        $tacgia->Xoa=0;
-        if($tacgia->save())
-        {
+        $tacgia->tentacgia = $request->tentacgia;
+        $tacgia->Xoa = 0;
+        if ($tacgia->save()) {
             Session::flash('message', 'Thêm thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'Thêm thất bại!');
+        }
         return redirect()->route('tacgia.index');
     }
 
@@ -75,7 +74,7 @@ class TacGiaController extends Controller
     public function edit($id)
     {
         //
-        $tacgia= TacGia::find($id);//Nhacungcap tên model      
+        $tacgia = TacGia::find($id); //Nhacungcap tên model
         return view('admin.pages.TacGia.edit')->with('tacgia', $tacgia);
     }
 
@@ -89,20 +88,18 @@ class TacGiaController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $tacgia= TacGia::find($id);
-        
-        $data=$request->validate([
-            'tentacgia' => 'required',  
-           
-        ]);    
-        
-        if($tacgia->update($data))
-        { 
+        $tacgia = TacGia::find($id);
+
+        $data = $request->validate([
+            'tentacgia' => 'required',
+        ]);
+
+        if ($tacgia->update($data)) {
             Session::flash('message', 'cập nhật thành công!');
-        }
-        else
+        } else {
             Session::flash('message', 'cập nhật thất bại!');
-            
+        }
+
         return redirect()->route('tacgia.index');
     }
 
