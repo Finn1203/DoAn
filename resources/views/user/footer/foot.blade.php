@@ -29,14 +29,14 @@
 	<script>
 		$(function(){
   			loadajaxnumcart();
-		});	
+		});
 		function loadajaxnumcart(){
 			$.ajax({
               url:"{{route('user.getNumCart')}}",
               method:"GET",
-        
+
               success:function(data){
-			
+
                 $('.circle-count').html(data);
               }
              });
@@ -478,7 +478,7 @@
 		function CheckDiscount(){
 			var code = $('#coupon').val();//lay code nhap
 			var priceOriginal = parseInt($('#priceOriginal').val());//lay gia goc
-			
+
 			var feeship = parseInt($('#fee_ship').val());//lay phí ship
                 $.ajax({
                     url: "{{ route('user.check-discount') }}",
@@ -501,11 +501,11 @@
 						//$('#num_discount').value = data;
                     },
 					error: function (data) {
-						
+
 						console.log(data);
 
 					}
-					
+
                 });
 		}
 		function calculateMoney(coupon){
@@ -517,7 +517,7 @@
 		}
 		function formatVND(money){ //hàm format tiền
 			var formatter = new Intl.NumberFormat('en-VN', {
-				
+
 				currency: 'VND',
 
 				});
@@ -526,7 +526,7 @@
 		}
 		//hienj nut huy
 		function disableCheckCoupon(){
-			$('#btn_check_coupon').attr('hidden', true);  //ẩn nút kiểm tra code 
+			$('#btn_check_coupon').attr('hidden', true);  //ẩn nút kiểm tra code
 			$('#coupon').attr('disabled', true);  //k cho nhập thẻ input code
 			$('#btn_remove_coupon').attr('hidden', false); //hiện nút hủy
 		}
@@ -547,7 +547,7 @@
 
 <script>
 	function InvalidMsg(textbox) {
-		
+
     if (textbox.value === '') {
         textbox.setCustomValidity('Vui Lòng Nhập Địa Chỉ');
     } else {
@@ -571,7 +571,7 @@
                     $(this).next().remove();
                 }
       });
-        
+
 	$('#btnPayment').click(function(){
 		var checkPhone  = validatePhoneNumber($('#phone_checkout'));
 		var checkAddress = validateAddress($('#Dia_Chi'));
@@ -581,7 +581,7 @@
 	});
 	 // kiểm tra số điện thoại
     function validatePhoneNumber(tel){
-		
+
         // nếu đã kiểm tra rồi thì return
         if(tel.hasClass('required')){
             return;
@@ -605,7 +605,7 @@
         }
 
         return true;
-    
+
 	}
 
 	function validateAddress(address){
@@ -641,11 +641,11 @@
 		return true;
 	}
 
-	// 1113/14/16 a Huỳnh Tấn Phát, phường 9, quận 7, TPHCM
-	// 1113/14/16 a Huỳnh Tấn Phát, Phường 9, Quận 7, tpHCM
-	// xã Hòa Hiệp, huyện Tam Bình, tỉnh Vĩnh Long
-	// Xã Hòa Hiệp, Huyện Tam Bình, Tỉnh Vĩnh Long
-	
+	// Cầu Diễn , P. Minh Khai, Q. Bắc Từ Liêm, TP. Hà Nội
+	// Cầu Diễn , P. Minh Khai, Q. Bắc Từ Liêm, TP. Hà Nội
+	// xã Quỳnh Diễn, huyện Quỳnh Lưu, tỉnh Nghệ An
+	// xã Quỳnh Diễn, huyện Quỳnh Lưu, tỉnh Nghệ An
+
 	$('#btnsave').click(function(){
 		var checkPhone  = validatePhoneNumber($('#phone_checkout'));
 		var checkAddress = validateAddress($('#Dia_Chi'));

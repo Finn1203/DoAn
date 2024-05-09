@@ -3,10 +3,10 @@
 
 
 		<!-- Slider Banner trang web -->
-		
+
 		<div class="banner">
 			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-				
+
 				<div class="carousel-inner" role="listbox">
                		@foreach($slideshow as $slideshows)
 					<div class="carousel-item active"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}" class="img-fluid" alt="">
@@ -21,7 +21,7 @@
 					@foreach($slideshow2 as $slideshows)
 					<div class="carousel-item item2"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}" class="img-fluid" alt="">">
 						<div class="carousel-caption text-center">
-							<h3>Với N&T
+							<h3>Với MyBook
 								<span>Kiến Thức Là Vô Tận</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
@@ -32,7 +32,7 @@
 					@foreach($slideshow3 as $slideshows)
 					<div class="carousel-item item3"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}">
 						<div class="carousel-caption text-center">
-							<h3>Đến Với N&T
+							<h3>Đến Với MyBook
 								<span>Chúng Tôi Sẽ Cho Bạn Dịch Vụ Tốt Nhất</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
@@ -43,7 +43,7 @@
 					@foreach($slideshow4 as $slideshows)
 					<div class="carousel-item item4"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}"
 						<div class="carousel-caption text-center">
-							<!-- <h3>Đồng Hành Cùng N&T
+							<!-- <h3>Đồng Hành Cùng MyBook
 								<span>Trở Lại Trường Sau Mùa Hè</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a> -->
@@ -53,7 +53,7 @@
 					@foreach($slideshow5 as $slideshows)
 					<div class="carousel-item item4"><img src="{!! asset('image/'.$slideshows->HinhAnh)!!}"
 						<div class="carousel-caption text-center">
-							<h3>Đồng Hành Cùng N&T
+							<h3>Đồng Hành Cùng MyBook
 								<span>Trở Lại Trường Sau Mùa Hè</span>
 							</h3>
 							<a href="{{ route('user.shop')}}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a>
@@ -61,7 +61,7 @@
 					</div>
 					@endforeach
 				</div>
-			
+
 			</div>
 			<!--//banner -->
 		</div>
@@ -76,7 +76,7 @@
 					@foreach($sach_moi_nhat as $books)
 					<div class="col-md-3">
 						<div class="product-googles-info googles">
-							
+
 							<div class="men-pro-item">
 								<!-- Hình ảnh -->
 								<a href="{{route('user.single',$books->id)}}">
@@ -105,15 +105,15 @@
 															{{csrf_field()}}
 															<button type="button" class="googles-cart pgoogles-cart" onclick="AddCart({{ $books->id }})">
 																<i class="fas fa-cart-plus"></i>
-															</button>								
+															</button>
 														</form>
 														</div>
 														<div class="googles single-item hvr-outline-out" style="">
 															<form>
 															{{ csrf_field() }}
 																<button type="button" class="googles-heart" onclick="Favorite({{ $books->id }})">
-																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>	
-																</button>	
+																   <a class="wishlist" href=""><i class="fas fa-heart"></i></a>
+																</button>
 															</form>
 														</div>
 														@endif
@@ -124,10 +124,10 @@
 						</div>
 					</div>
 					@endforeach
-				
-					
-					
-					
+
+
+
+
 				</div>
 				<!--//Sách mới-->
 				<!--/Banner middle trang web-->
@@ -139,7 +139,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<!--//Banner trang web-->
 				<div class="inner-sec-shop px-lg-4 px-3">
 					<h3 class="tittle-w3layouts my-lg-4 my-4">Sách Bán Chạy Nhất </h3>
@@ -175,7 +175,7 @@
 															{{csrf_field()}}
 															<button type="button" class="googles-cart pgoogles-cart" onclick="AddCart({{ $books->id }})">
 																<i class="fas fa-cart-plus"></i>
-															</button>								
+															</button>
 														</form>
 											@endif
 										</div>
@@ -185,7 +185,7 @@
 							</div>
 						</div>
 						@endforeach
-						
+
 											</div>
 				</div>
 			</div>

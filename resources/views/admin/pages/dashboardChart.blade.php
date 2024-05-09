@@ -17,7 +17,7 @@
             }]
         },
         options: {
-            
+
             scales: {
                 y: { // defining min and max so hiding the dataset does not change scale range
                     beginAtZero: true
@@ -78,7 +78,7 @@ Highcharts.chart('container', {
         type: 'pie'
     },
     title: {
-        text: 'Biểu đồ thống kê đơn hàng năm 2022'
+        text: 'Biểu đồ thống kê đơn hàng năm 2024'
     },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.y}</b>'
@@ -107,7 +107,7 @@ Highcharts.chart('container', {
             { name: 'Đơn Duyệt', y: {{$ttDuyetdon}} },
             { name: 'Đang Giao Hàng', y: {{$ttVanchuyen}} },
             { name: 'Giao Hàng Thành Công', y: {{$ttGiaoThanhcong}} }
-            
+
         ]
     }]
 });

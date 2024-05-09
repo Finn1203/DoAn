@@ -33,17 +33,17 @@
 						<div class="col-lg-6 about-info">
 							<h3 class="tittle-w3layouts text-left mb-lg-5 mb-3">Về chúng tôi</h3>
 							<div class="article-content"><p>
-								<p><strong>Tại sao bạn nên chọn N&T Books?</strong></p>
-								
-								<p><span style="font-weight: 400;">100% nội dung trên N&T Books là nội dung có bản quyền. N&T Books cam kết là nhà cung cấp dịch vụ và đối tác uy tín của bạn, hoạt động vì quyền lợi và sự phát triển bền vững của các bên.</span></p>
-								
+								<p><strong>Tại sao bạn nên chọn MyBook?</strong></p>
+
+								<p><span style="font-weight: 400;">100% nội dung trên MyBook là nội dung có bản quyền. MyBook cam kết là nhà cung cấp dịch vụ và đối tác uy tín của bạn, hoạt động vì quyền lợi và sự phát triển bền vững của các bên.</span></p>
+
 								<p><strong><em>Đối với Độc giả:</em></strong></p>
 								<p>&nbsp; &nbsp; &nbsp; + Đọc cả kho sách điện tử giá trị chỉ với chi phí tiết kiệm.</p>
 								<p>&nbsp; &nbsp; &nbsp; +&nbsp;Đăng ký tài khoản nhanh chóng, thuận tiện. Hỗ trợ đăng ký từ các tài khoản Mạng xã hội.</p>
 								<p>&nbsp; &nbsp; &nbsp; +&nbsp;Sách mới được lựa chọn và cập nhật liên tục bởi đội ngũ biên tập viên giàu kinh nghiệm.</p>
 								<p>&nbsp; &nbsp; &nbsp; +&nbsp;Đọc sách mọi lúc, mọi nơi, đồng bộ nội dung và lịch sử đọc sách trên đa màn hình, đa thiết bị.</p>
 								<p>&nbsp; &nbsp; &nbsp; +&nbsp;Cơ hội được hưởng thêm những quyền lợi ưu đãi hấp dẫn khi trở thành thành viên của Y&B Books</p>
-								
+
 								<p><strong><em>Đối với nhà xuất bản, nhà phát hành, tác giả độc lập:</em></strong></p>
 								<p>&nbsp; &nbsp; &nbsp; +&nbsp;Được tạo kho sách riêng biệt và phát triển thương hiệu trong mảng sách điện tử</p>
 								<p>&nbsp; &nbsp; &nbsp; +&nbsp;Được tiếp cận và giới thiệu tác phẩm đến với hơn 3 triệu người đọc trên nền tảng Waka một cách nhanh chóng và hiệu quả nhất.</p>
@@ -59,9 +59,9 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- /grids -->
-				
+
 			</div>
 		</div>
 	</section>

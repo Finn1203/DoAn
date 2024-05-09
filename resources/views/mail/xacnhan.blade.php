@@ -123,8 +123,7 @@
                                             </td>
                                             <td style="padding: 0px;"><span color="#000000"
                                                     class="sc-csuQGl CQhxV"
-                                                    style="font-size: 12px; color: rgb(0, 0, 0);"><span>03 Nguyễn
-                                                        Huệ,Q1,TPHCM</span></span></td>
+                                                    style="font-size: 12px; color: rgb(0, 0, 0);"><span>Cầu Diễn , P. Minh Khai, Q. Bắc Từ Liêm, TP. Hà Nội</span></span></td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -27,44 +27,44 @@ class HoaDonController extends Controller
     public function index(Request $request)
     {
         //
-      
+
         $hoadon = HoaDonBan::orderBy('created_at', 'desc')->paginate(12);
         $chitiethoadonban=ChiTietHoaDonBan::all();
         if(isset($_GET['sort_by'])){
           $sort_by=$_GET['sort_by'];
-          
+
           if($sort_by=='all'){
             $hoadon=HoaDonBan::orderby('created_at','DESC')->get();
-          
+
           }
           elseif($sort_by=='cancel'){
             $hoadon=HoaDonBan::where('TrangThai',0)->orderby('created_at','DESC')->get();
-             
+
           }
           elseif($sort_by=='new'){
             $hoadon=HoaDonBan::where('TrangThai',1)->orderby('created_at','DESC')->get();
-             
+
           }
           elseif($sort_by=='done'){
             $hoadon=HoaDonBan::where('TrangThai',3)->orderby('created_at','DESC')->get();
-             
+
           }
           elseif($sort_by=='move'){
-            
+
               $hoadon=HoaDonBan::where('TrangThai',4)->orderby('created_at','DESC')->get();
           }
           elseif($sort_by=='complete'){
-            
+
             $hoadon=HoaDonBan::where('TrangThai',2)->orderby('created_at','DESC')->get();
         }
-         
+
       }
-  
+
         return View('admin.pages.HoaDon.index', compact('hoadon','chitiethoadonban'));
     }
     public function getDetail($id){
         $chitiethoadonban = ChiTietHoaDonBan::where('IdHoaDB', $id)->get();
-        
+
         $hoadon = HoaDonBan::find($id);
         $html = '
         <div class="baobang">
@@ -74,48 +74,48 @@ class HoaDonController extends Controller
                 <div class="panel-heading">
                 Thông tin đăng nhập
                 </div>
-                
+
                 <div class="table-responsive">
-                                
+
                   <table class="table table-striped b-t b-light">
                     <thead>
                       <tr>
-                      
+
                         <th>Tên khách hàng</th>
                         <th>Số điện thoại</th>
                         <th>Email</th>
-                        
+
                         <th style="width:30px;"></th>
                       </tr>
                     </thead>
                     <tbody>
-               
+
                     <tr>
                         <td>'.$hoadon->TaiKhoan->HoTen.'</td>
                         <td>'.$hoadon->TaiKhoan->SDT.'</td>
                         <td>'.$hoadon->TaiKhoan->Email.'</td>
                       </tr>
-                
+
                     </tbody>
                   </table>
 
                 </div>
-              
+
               </div>
       </div>
 
 
 
       <div class="table-agile-info">
-        
+
         <div class="panel panel-default">
           <div class="panel-heading">
             Liệt kê chi tiết đơn hàng
           </div>
-                                    
+
         <div class="baochitiet">
           <div class="table-responsive chitietdh">
-                           
+
             <table class="table table-striped ">
               <thead style="background: #f5f5f5;">
                 <tr>
@@ -128,19 +128,19 @@ class HoaDonController extends Controller
                   <th>Phí ship hàng</th>
                   <th>Giá sản phẩm</th>
                   <th>Tổng tiền</th>
-                  
+
                   <th style="width:30px;"></th>
                 </tr>
               </thead>
               <tbody>';
-                
-           
+
+
                 $i=0;
-                foreach($chitiethoadonban as $chitiet){ 
+                foreach($chitiethoadonban as $chitiet){
                         $i++;
                         $html .= '
                         <tr>
-                        
+
                         <td><i>'.$i.'</i></td>
                         <td style="max-width: 180px; text-overflow: ellipsis; overflow: hidden">'.$chitiet->Sach->TenSach.'</td>
                         <td><img src="../image/'.$chitiet->Sach->AnhSach.'" style="width:50px; height:50px; border-radius:0%"></td>
@@ -148,17 +148,17 @@ class HoaDonController extends Controller
                         <td>'.number_format(15000 ,0,",",",").' VND</td>
                         <td>'.number_format($chitiet->GiaBan ,0,",",",").' VND</td>
                         <td>'.number_format($chitiet->HoaDon->TongTien ,0,",",",").' VND</td>
-                        
-                        
+
+
                         </tr>';
-                        
+
             }
-              
-     $html .=' </div> </div> 
+
+     $html .=' </div> </div>
      <div class="modal-footer">
      <div id="detail">
-    
-    
+
+
      <select id="trangthaidonhang" data-id='.$hoadon->id.' class="form-control order_details">';
      if($hoadon->TrangThai==1){
      $html .=' <option selected value="1">Chưa xử lý</option>
@@ -168,13 +168,13 @@ class HoaDonController extends Controller
       $html .='<option selected hidden value="3">Đã Duyệt</option>
       <option  value="0">Hủy Đơn</option>
       <option value="4">Đang giao hàng</option>';
-      
+
      }
     elseif($hoadon->TrangThai==4){
       $html .='<option selected hidden value="3">Đang giao hàng</option>
       <option  value="0">Hủy Đơn</option>
       <option  value="2">Giao hàng thành công</option>';
-      
+
     }
     elseif($hoadon->TrangThai==2){
       $html .='<option selected hidden value="2">Giao hàng thành công</option>
@@ -186,7 +186,7 @@ class HoaDonController extends Controller
       <option value="4">Đang giao hàng</option>';
     }
     $html .='</select></div>';
- 
+
 
         return $html;
 
@@ -213,12 +213,12 @@ class HoaDonController extends Controller
 
 	}
   public function changeStatusOrder(Request $request){
-  
+
     $order = HoaDonBan::find($request->id);
     $order->TrangThai = $request->TrangThai;
     $orde=$order->TaiKhoan->HoTen;
     $orde1=$order->TaiKhoan->Email;
-    
+
     if($order->save()){
       if($order->TrangThai == 1){
         return 'Đơn Mới';
@@ -247,16 +247,16 @@ class HoaDonController extends Controller
         Mail::to($orde1)->send(new Mailmagiamgia($data));
         return 'Giao hàng thành công';
       }
-        
+
       }else if($order->TrangThai == 2){
-       
+
         return 'Giao hàng thành công';
       }
-        //mail 
-       
+        //mail
+
        else if($order->TrangThai == 3){
         return 'Duyệt đơn thành công';
-       
+
       }
     elseif($order->TrangThai == 4){
       return 'Đang giao hàng';
@@ -275,7 +275,7 @@ class HoaDonController extends Controller
      * @return \Illuminate\Http\Response
      */
     //Lọc
-   
+
     public function create()
     {
         //
@@ -339,29 +339,29 @@ class HoaDonController extends Controller
     public function print_order($id){
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($this->print_order_convert($id));
-      
+
       return $pdf->stream();
   }
     public function print_order_convert($id){
-      
+
       $order_details = ChiTietHoaDonBan::where('IdHoaDB',$id)->get();
-    
+
       $order = HoaDonBan::find($id);
       $giamgia = 0;
-    
+
       if($order->id_makm != null){
        $maGiamGia = MaGiamGia::find($order->id_makm);
        if($maGiamGia->LoaiKM == 1){ //%
         $giamgia = (($order->TongTien*100)/(100-$maGiamGia->ChietKhau)) - $order->TongTien;
       }
-    
+
       }
       $tenkh = Auth::user()->HoTen;
       $diachi = Auth::user()->DiaChi;
       $sdt = Auth::user()->SDT;
       //$order_details_product = OrderDetail::with('product')->where('order_code', $checkout_code)->get();
       $tongcong = 0;
-    
+
 
       $output = '';
 
@@ -389,13 +389,13 @@ class HoaDonController extends Controller
           width: 100%;
       }
       .w-50{
-          width:50%;   
+          width:50%;
       }
       .w-85{
-          width:85%;   
+          width:85%;
       }
       .w-15{
-          width:15%;   
+          width:15%;
       }
       .logo img{
           width:45px;
@@ -454,14 +454,14 @@ class HoaDonController extends Controller
   <div class="add-detail mt-10">
       <div class="w-50 float-left mt-10">
           <p class="m-0 pt-5 text-bold w-100">Số Hóa Đơn - <span class="gray-color">#'.$order->id.'</span></p>
-          <p class="m-0 pt-5 text-bold w-100">Nhà Bán Hàng: N&T Books Store  <span class="gray-color"></span></p>
+          <p class="m-0 pt-5 text-bold w-100">Nhà Bán Hàng: MyBook  <span class="gray-color"></span></p>
           <p class="m-0 pt-5 text-bold w-100">Ngày Lập - <span class="gray-color">'.Carbon::createFromFormat ('Y-m-d',$order->NgayLap).'</span></p>
-      
+
       </div>
 
       <div class="w-50 float-left logo mt-10">
-    
-      <img src="user/images/logo_min.png'.'"> 
+
+      <img src="user/images/logo_min.png'.'">
       </div>
       <div style="clear: both;"></div>
   </div>
@@ -483,7 +483,7 @@ class HoaDonController extends Controller
                   <div class="box-text">
                       <p>Họ Tên Người Nhận : '.$order->TaiKhoan->HoTen.'</p>
                       <p>Địa Chỉ Giao Hàng : '.$order->DiaChiGH.'</p>
-                      
+
                       <p>Số Điện Thoại : '.$order->SDT.'</p>
                   </div>
               </td>
@@ -497,13 +497,13 @@ class HoaDonController extends Controller
               <th class="w-50">Phí Ship</th>
           </tr>
           <tr>
-              <td>'; 
+              <td>';
               if($order->PhuongTTT == 1) {
                 $output .= "Ví VNPAY";
               }else if ($order->PhuongTTT == 2) {
                 $output .= "Thanh Toán Nhận Hàng";
               }
-              $output .=   
+              $output .=
               '</td>
               <td>15,000 VND</td>
           </tr>
@@ -527,7 +527,7 @@ class HoaDonController extends Controller
             <td>'.number_format($product->GiaBan ,0,",",",").' VND</td>
             <td>'.$product->SoLuong.'</td>
             <td>'.number_format($product->SoLuong*$product->GiaBan,0,",",",").' VND</td>
-            
+
         </tr>';
           $i++;}
           $sotiengiam = 0;
@@ -547,7 +547,7 @@ class HoaDonController extends Controller
                           <p>'.number_format($order->TongTien,0,",",",").' VND</p>
                       </div>
                       <div style="clear: both;"></div>
-                  </div> 
+                  </div>
               </td>
           </tr>
       </table>

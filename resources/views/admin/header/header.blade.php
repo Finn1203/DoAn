@@ -63,7 +63,7 @@
           </li>
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{!! asset('user/images/face1.jpg')!!}" alt="profile"/> n&t@gmail.com
+              <img src="{!! asset('user/images/face1.jpg')!!}" alt="profile"/> admin@gmail.com
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
