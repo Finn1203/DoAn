@@ -166,15 +166,16 @@
   display: flex;
   border: 3px solid #fff;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   justify-content: center;
   background:red;
   color:white;
   align-items: center;
   box-shadow: 0 1px 10px rgba(255, 0, 0, 0.46);
-  margin-right: 60px;
+  margin-right: 40px;
   margin-bottom:16px;
+  margin-left: 10px;
 }
 </style>
 <!-- End Modal -->
@@ -184,7 +185,8 @@
 			<div class="row">
 				<!-- LOGO của trang web -->
 				<div class="col-md-3 top-info text-left mt-lg-4">
-					<img width="70%" height="70%" src="{!! asset('user\images\logo-2.png')!!}" class="img-fluid" alt="" >
+					<img width="70%" height="70%" src="{!! asset('user\images\logo-2.png')!!}" class="img-fluid"
+                    style="margin-top: -45px;" alt="" >
 				</div>
 				<!-- BANNER của trang web -->
 				<div class="col-md-6 logo-w3layouts top-info text-center">

@@ -35,7 +35,7 @@
 							</div>
 							<div class="col-md-9 address-right text-left">
 								<h6>Địa Chỉ</h6>
-								<p>455 Điện Biên Phủ, Quận Bình Thạnh, TP.Hồ Chí Minh.
+								<p>Cầu Diễn, P, Minh Khai, Q. Bắc Từ Liêm, TP. Hà Nội
 
 								</p>
 							</div>
@@ -50,8 +50,8 @@
 							<div class="col-md-9 address-right text-left">
 								<h6>Email</h6>
 								<p>
-									<a href="mailto:ntbookstore2018@gmail.com" style="color:#2a8490;line-height: 1.9em;"> ntbookstore2018@gmail.com</a>
-									<a href="mailto:ntsupport@gmail.com" style="color:#2a8490;line-height: 1.9em;"> ntsupport@gmail.com</a>
+									<a href="mailto:nguyennamphi99@gmail.com" style="color:#2a8490;line-height: 1.9em;"> nguyennamphi99@gmail.com</a>
+									<a href="mailto:finnsupport@gmail.com" style="color:#2a8490;line-height: 1.9em;"> finnsupport@gmail.com</a>
 								</p>
 							</div>
 
@@ -101,7 +101,7 @@
 		</div>
 	</section>
 	<div class="contact-map">
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.079548632198!2d106.71168864937755!3d10.728347862977762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f8dd83e71a3%3A0x9666d480043ef402!2zMyBOZ3V54buFbiBWxINuIExpbmgsIFTDom4gUGhvbmcsIFF14bqtbiA3LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1638964827738!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.47366321303!2d105.73253187471497!3d21.053735986921335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345457e292d5bf%3A0x20ac91c94d74439a!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBDw7RuZyBuZ2hp4buHcCBIw6AgTuG7mWk!5e0!3m2!1svi!2s!4v1715272716896!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
 	<script>
 	window.onload = function(){

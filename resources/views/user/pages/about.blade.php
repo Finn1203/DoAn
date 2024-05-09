@@ -67,7 +67,7 @@
 	</section>
 	<div class="inner-sec-shop px-lg-4 px-3" style="padding-top:30px;">
  					<div class="col-lg-12">
-						<iframe width="100%" height="550" src="https://www.youtube.com/embed/dBv1zyMPM3A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<iframe width="100%" height="550" src="https://www.youtube.com/embed/9c-yi4vCqZg?si=nmc00_2Wh49mpklH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 					</div>
 				</div>
 @stop

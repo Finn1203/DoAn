@@ -43,7 +43,7 @@
 								</ul>
 								<br>
 								<div class="sorting">
-							<select id="sort" name="tacgia"  class="frm-field required sect" style="width: 100%;">
+							<select id="sort" name="tacgia"  class="frm-field required sect" style="width: 100%;margin-left: 5px;">
 								<option value="null">Lọc tác giả </option>
 								<!-- <option value="null">Bán chạy nhất</option>  -->
 								@foreach($tacgia as $tacgias)
@@ -53,7 +53,11 @@
 
 							    </div>
 								<div class="loc-price-button">
-									<input type="submit" value="Lọc" class="btn-search-price"/>
+									<input type="submit" value="Lọc" class="btn-search-price"
+                                        style="color: white;
+                                        text-align: center;
+                                        background-color: black;"
+                                    />
 							    </div>
 
 							</div>
