@@ -303,7 +303,7 @@
 
 
 <!-- Your SDK code -->
-<script>
+{{-- <script>
   window.fbAsyncInit = function() {
 	FB.init({
 	  xfbml            : true,
@@ -318,7 +318,7 @@
 	js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
 	fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
-</script>
+</script> --}}
 <script>
 			function saveSearch(){
 				$('#form-search').submit();
