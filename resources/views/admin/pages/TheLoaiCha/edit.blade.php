@@ -10,13 +10,13 @@
         <div class="row">
             <div class="col-md-12" style="margin-left: 80px; padding-right:70px">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Sửa Thể Loại Cha</h3>
+                  <h3 class="font-weight-bold">Sửa danh mục</h3>
                 </div>
                 <div class="col-12" style="padding-top:10px;">
                     <ul class="breadcrumb" style="border: none">
                       <li><a href="{{route('dashboard.index')}}">Dashboard</a></li><li>/</li>
-                      <li><a href="{{route('theloaicha.index')}}">Quản lý thể loại cha</a></li>
-                      <li>Sửa thể loại cha</li>
+                      <li><a href="{{route('theloaicha.index')}}">Quản lý danh mục</a></li>
+                      <li>Sửa danh mục</li>
                     </ul>
                 </div>
             </div>
@@ -30,9 +30,9 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <label for="exampleInputTitle">Tên Sách</label>
-                    <input class="form-control" type="text" name="TenTheLoaiCha" value="{{$theloaicha->TenTheLoaiCha}}" id="TenTheLoaiCha" placeholder="Tên thể loại cha">
+                    <input class="form-control" type="text" name="TenTheLoaiCha" value="{{$theloaicha->TenTheLoaiCha}}" id="TenTheLoaiCha" placeholder="Tên danh mục">
                   </div>
-                  
+
                 <div class="row" style="float:right">
                   <button type="submit" class="btn btn-success"><i class="fas fa-save"></i></button> &nbsp;
                   <a class="btn btn-secondary" href="{{route('theloaicha.index')}}" style="margin-left: 15px;margin-right: 30px; color:white"><i class="fas fa-window-close"></i></a>

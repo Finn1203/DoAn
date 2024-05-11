@@ -105,7 +105,7 @@ Route::group(['middleware' => 'CheckAdminLogin', "prefix" => "admin", "namespace
     //Đường dẫn đến trang kho
     Route::resource('kho',KhoController::class);
     Route::get('kho/{id}/delete','KhoController@delete')->name('kho.delete');
-    //Đường dẫn đến trang thể loại cha
+    //Đường dẫn đến trang danh mục
     Route::resource('theloaicha',TheLoaiChaController::class);
     Route::get('theloaicha/{id}/delete','TheLoaiChaController@delete')->name('theloaicha.delete');
     //Đường dẫn đến trang mã giảm giá

@@ -18,14 +18,14 @@
                   <thead>
                   <tr>
                     <th>Tên Thể Loại</th>
-                    <th>Tên Thể Loại Cha</th>
+                    <th>Tên danh mục</th>
                     <th>Tùy Chỉnh</th>
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($theloai ?? '' as $theloais)
                   <tr>
-                    
+
                     <td>{{$theloais->TenTheLoai}}</td>
                     <td>{{$theloais->TheLoaiCha->TenTheLoaiCha}}</td>
                     <td>
@@ -57,12 +57,12 @@
 }
 </script>
 @stop
-<style> 
+<style>
 tr:hover{
             background-color:#ddd;
             cursor:pointer;
         }
 .table{
-border: 1px solid #CED4DA;  
+border: 1px solid #CED4DA;
 border-collapse: collapse; }
       </style>

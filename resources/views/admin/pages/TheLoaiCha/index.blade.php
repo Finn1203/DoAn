@@ -7,7 +7,7 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">QUẢN LÝ THỂ LOẠI CHA</h3>
+                  <h3 class="font-weight-bold">Quản lý danh mục</h3>
                 </div>
                 @if(Session::has('message'))
                 <div class="alert alert-success alert-dismissible fade show notify" role="alert">
@@ -25,16 +25,16 @@
                     <table id="book" class="table" broder="1"  >
                   <thead>
                   <tr>
-                    <th>Tên Thể Loại</th>
+                    <th>Tên Danh Mục</th>
                     <th>Tùy Chỉnh</th>
                   </tr>
                   </thead>
                   <tbody>
                   @foreach($theloaicha ?? '' as $theloaichas)
                   <tr>
-                    
+
                     <td>{{$theloaichas->TenTheLoaiCha}}</td>
-                   
+
                     <td>
                     <a href="{{ route('theloaicha.edit', [$theloaichas->id])}}" class="btn btn-warning" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-edit' style='font-size:15px'></i></a>
                     <a onclick="return ComfirmDelete();" href="{{ route('theloaicha.delete', [$theloaichas->id]) }}" class="btn btn-danger" style="padding: 0.5rem 1.5rem; border-radius: 10px;"><i class='fas fa-trash-alt' style='font-size:15px'></i></a>
@@ -56,19 +56,19 @@
 <script>
   function ComfirmDelete() {
   var txt;
-  if (confirm("Bạn có muốn xóa thể loại cha đã chọn?")) {
+  if (confirm("Bạn có muốn xóa danh mục đã chọn?")) {
     return true;
   }
   return false;
 }
 </script>
 @stop
-<style> 
+<style>
 tr:hover{
             background-color:#ddd;
             cursor:pointer;
         }
 .table{
-border: 1px solid #CED4DA;  
+border: 1px solid #CED4DA;
 border-collapse: collapse; }
       </style>

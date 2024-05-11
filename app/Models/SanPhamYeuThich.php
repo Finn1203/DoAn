@@ -19,4 +19,7 @@ class SanPhamYeuThich extends Model
     public function Sach(){
         return $this->belongsTo('App\Models\Sach', 'IdSach', 'id');
     }
+    public function TaiKhoan(){
+        return $this->belongsTo('App\Models\User', 'IdKH', 'id');
+    }
 }
