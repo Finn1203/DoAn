@@ -4,20 +4,22 @@
     </p>
     <p>Chúng tôi gửi cho bạn mã giảm giá: <i> {{ $data['magiamgia'] }} </i> có giá trị từ ngày {{ $data['ngaybatdau'] }}
         đến {{ $data['ngayketthuc'] }} giảm 10% áp dụng cho đơn hàng tiếp theo :) </p>
-        <table cellpadding="0" cellspacing="0" class="sc-gPEVay eQYmiW"
+    <table cellpadding="0" cellspacing="0" class="sc-gPEVay eQYmiW"
         style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: &quot;Courier New&quot;; min-width: 450px;">
         <tbody>
             <tr style="text-align: center;">
                 <td>
                     <h3 color="#000000" class="sc-fBuWsC eeihxG"
                         style="margin: 0px; font-size: 18px; color: rgb(0, 0, 0);">
-                        <span>Nguyễn Nam </span><span>&nbsp;</span><span>Phi</span></h3>
+                        <span>Nguyễn Nam </span><span>&nbsp;</span><span>Phi</span>
+                    </h3>
                     <p color="#000000" font-size="medium" class="sc-fMiknA bxZCMx"
                         style="margin: 0px; color: rgb(0, 0, 0); font-size: 14px; line-height: 22px;"><span>Quản
                             Lý</span></p>
                     <p color="#000000" font-size="medium" class="sc-dVhcbM fghLuF"
                         style="margin: 0px; font-weight: 500; color: rgb(0, 0, 0); font-size: 14px; line-height: 22px;">
-                        <span>WebSite</span><span>&nbsp;|&nbsp;</span><span>MyBook</span></p>
+                        <span>WebSite</span><span>&nbsp;|&nbsp;</span><span>MyBook</span>
+                    </p>
                 </td>
             </tr>
             <tr>
@@ -117,7 +119,8 @@
                                                 </td>
                                                 <td style="padding: 0px;"><span color="#000000"
                                                         class="sc-csuQGl CQhxV"
-                                                        style="font-size: 12px; color: rgb(0, 0, 0);"><span>Cầu Diễn, P. Minh Khai, Q. Bắc Từ Liêm, TP Hà Nội</span></span></td>
+                                                        style="font-size: 12px; color: rgb(0, 0, 0);"><span>Cầu Diễn,
+                                                            P. Minh Khai, Q. Bắc Từ Liêm, TP Hà Nội</span></span></td>
                                             </tr>
                                         </tbody>
                                     </table>

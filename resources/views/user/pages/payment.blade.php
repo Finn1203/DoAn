@@ -66,7 +66,7 @@ td, th {
                                             <input class="form-control" type="text"  id ="Dia_Chi"
                                                   value="{{ Auth::user()->DiaChi }}"
                                                 id="Dia_Chi" name="address_checkout" placeholder="Địa chỉ"/>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@ td, th {
                 </div>
                 <div class="col-md-7 address_form">
                     <div class="container-fluid" style="border:1px solid; padding-bottom: 20px;">
-                       
+
                             <h4>Đơn hàng</h4>
                             <table class="timetable_sub">
                                 <thead>
@@ -170,12 +170,12 @@ td, th {
                           Thanh Toán Khi Nhận Hàng
                         </label>
                       </div>
-                      <div class="form-check">
+                      {{-- <div class="form-check">
                         <input class="form-check-input" type="radio" value="2" id="flexCheckChecked"  name="menthodPay">
                         <label class="form-check-label" for="flexCheckChecked">
                           VNPAY
                         </label>
-                      </div>
+                      </div> --}}
                     <!-- <div class="container-fluid" style="border:1px solid; margin-top:15px;">
 					<h4>Phương thức thanh toán</h4>
 						<div class="col-lg-12" style="display: flex; margin-bottom: 15px">

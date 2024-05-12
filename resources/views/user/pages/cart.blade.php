@@ -46,11 +46,11 @@
 						@foreach($gio_hang as $cart)
 						<?php
 							$tong = 0;
-							
+
 							$tong= $cart->Sach->GiaTien * $cart->So_Luong;
 							$tongall+=$tong;
 							?>
-							
+
 							<tr class="rem1">
 								<td class="invert ">{{$stt}}</td>
 								<td class="invert-image">
@@ -58,7 +58,7 @@
 										<img src="{!! asset('image/'.$cart->Sach->AnhSach)!!}" alt=" " class="img-responsive">
 									</a>
 								</td>
-								<td class="invert">					
+								<td class="invert">
 									<input type="number" min="1" max="{{$cart->SLMax }}" id="So_Luong{{$cart->id}}" style="width:50px;border: 1px solid #CDCDCD;color: #868282" value="{{$cart->So_Luong}}">
 									<input type="hidden" name="id" value="{{$cart->id}}" class="form-control">
 								</td>
@@ -77,13 +77,13 @@
 							</tr>
 							<?php $stt++; ?>
 @endforeach
-						</tbody>>
+						</tbody>
 					</table>
 					@if ($gio_hang->count() == 0)
 						<h4 style="text-align: center;">Chưa có sản phẩm nào trong giỏ hàng.</h4>
 					@endif
 					<div class="col-md-4 checkout-right-basket">
-						<ul>				
+						<ul>
 							<li style="font-size:120%; font-weight:600">Thành Tiền: &nbsp;	{{ number_format($tongall,0,",",",") }} VND
 								<input id="money-total" style="border: none; color: #f40017; text-align:right" readonly/>
 							</li>
@@ -99,6 +99,6 @@
 		</div>
 	</section>
 	<!--//checkout-->
-	
+
 	<!--footer -->
 	@stop

@@ -17,7 +17,7 @@ td, th {
 					<i class='fas fa-angle-right'></i>
 				</li>
 				<li>
-        
+
 					<a href="{{route('user.cart')}}">Đơn hàng {{$hoadon['id']}} </a>
 					<i class='fas fa-angle-hoadonright'></i>
 				</li>
@@ -44,33 +44,33 @@ td, th {
                     </div>
                     @endforeach
                     <div class="col-lg-4">
-                  
+
                         Ngày lập đơn: <b style="color:red">{{date("d-m-Y ", strtotime($hoadon->NgayLap))}}</b>
-                      
+
                     </div>
                 </div>
             </div>
             <div class="row" style="padding-top:20px">
                 <div class="col-lg-12" style="display: inline-flex;">
                     <div class="col-lg-6">
-                    
+
                         Địa chỉ giao hàng: <b style="color:red">{{ $hoadon['DiaChiGH'] }}</b>
-                      
+
                     </div>
                     <div class="col-lg-6">
-                        Phương thức thanh toán: 
-                        
+                        Phương thức thanh toán:
+
                         @if ($hoadon['PhuongTTT'] == 1) <b style="color:red">Thanh toán khi nhận hàng(COD)</b>
                         @elseif ($hoadon['PhuongTTT'] == 2) <b style="color:red">Thanh toán qua VNPay</b>
                         @endif
-                      
+
                     </div>
                 </div>
             </div>
             <div class="row" style="padding-top:50px">
                 <div class="col-lg-12">
                     <h5>Danh sách sản phẩm</h5>
-                    <table style="width:1060px; margin-top:20px; margin-bottom: 20px">
+                    <table style="width:100%; margin-top:20px; margin-bottom: 20px">
                     <thead>
                     <tr style="background-color: #9a9a9a">
                         <th>Tên sách</th>
@@ -104,7 +104,7 @@ td, th {
                     </table>
                 </div>
             </div>
-    
+
             <div class="row" style="float: right; padding-top: 15px; margin-bottom:50px; font-size: 130%">Tổng tiền: &nbsp; <b style="color:red">{{number_format($hoadon->TongTien,0,",",",")}} VND</b></div>
 		</div>
 	</div>
