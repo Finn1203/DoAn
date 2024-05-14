@@ -46,7 +46,7 @@
                     <label for="exampleInputTopic">Email</label>
                     <input class="form-control" type="text" name="Email" id="Email" placeholder="Email">
                   </div>
-                </div> 
+                </div>
                 <div class="row">
                   <div class="col-lg-6">
                     <label for="exampleInputTitle">SDT</label>
@@ -64,13 +64,13 @@
                     <label for="exampleInputTitle">Loại Tài Khoản</label>
                     <select style="border: 1px solid #CED4DA;border-radius: 4px; outline: none;" class="form-control" name="LoaiTK" id="LoaiTK" placeholder="Loại tài khoản">
                         <option value="0">Khách Hàng</option>
-                        <option value="1">Admin</option>                 
+                        <option value="1">Admin</option>
                     </select>
                   </div>
                 </div>
                 <div class="col-lg-6">
                     <label for="exampleInputTitle">Trạng thái</label>
-                    <select style="border: 1px solid #CED4DA;border-radius: 4px; outline: none;" name="TrangThai" class="form-control" id="TrangThai" placeholder="Trạng thái">
+                    <select style="border: 1px solid #CED4DA;border-radius: 4px; outline: none;margin-left: -15px;" name="TrangThai" class="form-control" id="TrangThai" placeholder="Trạng thái">
                         <option value="1">Đang hoạt động</option>
                         <option value="0">Chưa kích hoạt</option>
                     </select>
