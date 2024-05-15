@@ -1908,79 +1908,79 @@ MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 -- Các ràng buộc cho các bảng đã đổ
 --
 
---
--- Các ràng buộc cho bảng `hoadonban`
---
-ALTER TABLE `hoadonban`
-ADD CONSTRAINT `hoadonban_idkh_foreign` FOREIGN KEY (`IdKH`) REFERENCES `user` (`id`);
-ADD CONSTRAINT `hoadonban_id_makm_foreign` FOREIGN KEY (`id_makm`) REFERENCES `ma_giamgia` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `hoadonban`
+-- --
+-- ALTER TABLE `hoadonban`
+-- ADD CONSTRAINT `hoadonban_idkh_foreign` FOREIGN KEY (`IdKH`) REFERENCES `user` (`id`);
+-- ADD CONSTRAINT `hoadonban_id_makm_foreign` FOREIGN KEY (`id_makm`) REFERENCES `ma_giamgia` (`id`);
+-- COMMIT;
 
 
---
--- Các ràng buộc cho bảng `theloai`
---
-ALTER TABLE `theloai`
-ADD CONSTRAINT `theloai_tentlcha_foreign` FOREIGN KEY (`TenTLCha`) REFERENCES `theloaicha` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `theloai`
+-- --
+-- ALTER TABLE `theloai`
+-- ADD CONSTRAINT `theloai_tentlcha_foreign` FOREIGN KEY (`TenTLCha`) REFERENCES `theloaicha` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `binhluan`
---
-ALTER TABLE `binhluan`
-ADD CONSTRAINT `binhluan_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
-ADD CONSTRAINT `binhluan_idkh_foreign` FOREIGN KEY (`IdKH`) REFERENCES `user` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `binhluan`
+-- --
+-- ALTER TABLE `binhluan`
+-- ADD CONSTRAINT `binhluan_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
+-- ADD CONSTRAINT `binhluan_idkh_foreign` FOREIGN KEY (`IdKH`) REFERENCES `user` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `chitiethoadonban`
---
-ALTER TABLE `chitiethoadonban`
-ADD CONSTRAINT `chitiethoadonban_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
-ADD CONSTRAINT `chitiethoadonban_idhoadb_foreign` FOREIGN KEY (`IdHoaDB`) REFERENCES `hoadonban` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `chitiethoadonban`
+-- --
+-- ALTER TABLE `chitiethoadonban`
+-- ADD CONSTRAINT `chitiethoadonban_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
+-- ADD CONSTRAINT `chitiethoadonban_idhoadb_foreign` FOREIGN KEY (`IdHoaDB`) REFERENCES `hoadonban` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `giohang`
---
-ALTER TABLE `giohang`
-ADD CONSTRAINT `giohang_id_sach_foreign` FOREIGN KEY (`Id_Sach`) REFERENCES `sach` (`id`);
-ADD CONSTRAINT `giohang_Id_TK_foreign` FOREIGN KEY (`Id_TK`) REFERENCES `user` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `giohang`
+-- --
+-- ALTER TABLE `giohang`
+-- ADD CONSTRAINT `giohang_id_sach_foreign` FOREIGN KEY (`Id_Sach`) REFERENCES `sach` (`id`);
+-- ADD CONSTRAINT `giohang_Id_TK_foreign` FOREIGN KEY (`Id_TK`) REFERENCES `user` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `kho`
---
-ALTER TABLE `kho`
-ADD CONSTRAINT `kho_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `kho`
+-- --
+-- ALTER TABLE `kho`
+-- ADD CONSTRAINT `kho_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `sach`
---
-ALTER TABLE `sach`
-ADD CONSTRAINT `sach_idkm_foreign` FOREIGN KEY (`IdKM`) REFERENCES `khuyenmai` (`id`);
-ADD CONSTRAINT `sach_Idncc_foreign` FOREIGN KEY (`IdNCC`) REFERENCES `nhacungcap` (`id`);
-ADD CONSTRAINT `sach_nhaxuatban_foreign` FOREIGN KEY (`NhaXuatBan`) REFERENCES `nhaxuatban` (`id`);
-ADD CONSTRAINT `sach_dichgia_foreign` FOREIGN KEY (`DichGia`) REFERENCES `tacgia` (`id`);
-ADD CONSTRAINT `sach_kichthuoc_foreign` FOREIGN KEY (`KichThuoc`) REFERENCES `kichthuoc` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `sach`
+-- --
+-- ALTER TABLE `sach`
+-- ADD CONSTRAINT `sach_idkm_foreign` FOREIGN KEY (`IdKM`) REFERENCES `khuyenmai` (`id`);
+-- ADD CONSTRAINT `sach_Idncc_foreign` FOREIGN KEY (`IdNCC`) REFERENCES `nhacungcap` (`id`);
+-- ADD CONSTRAINT `sach_nhaxuatban_foreign` FOREIGN KEY (`NhaXuatBan`) REFERENCES `nhaxuatban` (`id`);
+-- ADD CONSTRAINT `sach_dichgia_foreign` FOREIGN KEY (`DichGia`) REFERENCES `tacgia` (`id`);
+-- ADD CONSTRAINT `sach_kichthuoc_foreign` FOREIGN KEY (`KichThuoc`) REFERENCES `kichthuoc` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `sanphamyeuthich`
---
-ALTER TABLE `sanphamyeuthich`
-ADD CONSTRAINT `sanphamyeuthich_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
-ADD CONSTRAINT `sanphamyeuthich_idkh_foreign` FOREIGN KEY (`IdKH`) REFERENCES `user` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `sanphamyeuthich`
+-- --
+-- ALTER TABLE `sanphamyeuthich`
+-- ADD CONSTRAINT `sanphamyeuthich_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
+-- ADD CONSTRAINT `sanphamyeuthich_idkh_foreign` FOREIGN KEY (`IdKH`) REFERENCES `user` (`id`);
+-- COMMIT;
 
---
--- Các ràng buộc cho bảng `theloai_sach`
---
-ALTER TABLE `sanphamyeuthich`
-ADD CONSTRAINT `theloai_sach_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
-ADD CONSTRAINT `theloai_sach_idtheloai_foreign` FOREIGN KEY (`IdTheLoai`) REFERENCES `theloai` (`id`);
-COMMIT;
+-- --
+-- -- Các ràng buộc cho bảng `theloai_sach`
+-- --
+-- ALTER TABLE `sanphamyeuthich`
+-- ADD CONSTRAINT `theloai_sach_idsach_foreign` FOREIGN KEY (`IdSach`) REFERENCES `sach` (`id`);
+-- ADD CONSTRAINT `theloai_sach_idtheloai_foreign` FOREIGN KEY (`IdTheLoai`) REFERENCES `theloai` (`id`);
+-- COMMIT;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
