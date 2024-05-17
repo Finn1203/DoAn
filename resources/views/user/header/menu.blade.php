@@ -35,7 +35,8 @@
                                     <ul>
                                         @foreach ($book->listcon as $con)
                                             <li class="media-mini mt-3">
-                                                <a href="{{ route('theloaisach', $con->id) }}">{{ $con->TenTheLoai }}</a>
+                                                <a
+                                                    href="{{ route('theloaisach', $con->id) }}">{{ $con->TenTheLoai }}</a>
                                             </li>
                                         @endforeach
                                     </ul>

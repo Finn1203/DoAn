@@ -8,18 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class SanPhamYeuThich extends Model
 {
     use HasFactory;
-    protected $table='sanphamyeuthich';
-    protected $fillable = [
-        'id',
-        'IdSach',
-        'IdKH',
-        'TrangThai',
-
-    ];
-    public function Sach(){
+    protected $table = 'sanphamyeuthich';
+    protected $fillable = ['id', 'IdSach', 'IdKH', 'TrangThai'];
+    public function Sach()
+    {
         return $this->belongsTo('App\Models\Sach', 'IdSach', 'id');
     }
-    public function TaiKhoan(){
+    public function TaiKhoan()
+    {
         return $this->belongsTo('App\Models\User', 'IdKH', 'id');
     }
 }

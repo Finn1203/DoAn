@@ -8,23 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class HoaDonBan extends Model
 {
     use HasFactory;
-    protected $table='hoadonban';
-    protected $fillable = [
-        'id',
-        'IdKH',
-        'NgayLap',
-        'DiaChiGH',
-        'SDT',
-        'TongTien',
-        'id_makm',
-        'PhuongTTT',
-        'TrangThai',
-
-    ];
-    public function TaiKhoan(){
+    protected $table = 'hoadonban';
+    protected $fillable = ['id', 'IdKH', 'NgayLap', 'DiaChiGH', 'SDT', 'TongTien', 'id_makm', 'PhuongTTT', 'TrangThai'];
+    public function TaiKhoan()
+    {
         return $this->belongsTo('App\Models\User', 'IdKH', 'id');
     }
-    public function MaGiamGia(){
+    public function MaGiamGia()
+    {
         return $this->belongsTo('App\Models\MaGiamGia', 'id_makm', 'id');
     }
 }

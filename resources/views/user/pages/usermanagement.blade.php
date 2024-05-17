@@ -161,8 +161,8 @@
                                     <div class="custom-file">
                                         <input accept="image/*" title="" type="file" class="form-control"
                                             name="AnhDaiDien" id="AnhDaiDien" placeholder="Chọn ảnh" />
-                                        <img width="15%" hight="10%" src="{{ asset('image/' . $user['AnhDaiDien']) }}"
-                                            class="img-thumbnail" />
+                                        <img width="15%" hight="10%"
+                                            src="{{ asset('image/' . $user['AnhDaiDien']) }}" class="img-thumbnail" />
                                     </div>
                                 </div>
                                 <div class="col-lg-12" style="margin-top:20px">
@@ -199,8 +199,7 @@
 
 @stop
 <style>
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 </style>

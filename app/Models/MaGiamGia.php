@@ -8,16 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class MaGiamGia extends Model
 {
     use HasFactory;
-    protected $table='ma_giamgia';
-    protected $fillable = [
-        'id',
-        'Code',
-        'SoLuong',
-        'ChietKhau',
-        'LoaiKM',
-        'NgayBĐ',
-        'NgayKT',
-        'TrangThai',
-
-    ];
+    protected $table = 'ma_giamgia';
+    protected $fillable = ['id', 'Code', 'SoLuong', 'ChietKhau', 'LoaiKM', 'NgayBĐ', 'NgayKT', 'TrangThai'];
 }

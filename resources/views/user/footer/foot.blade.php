@@ -528,7 +528,7 @@
                         $('#num_discount').html(formatVND(data[1]) + " VND"); //hiện thẻ số tiền giảm
                         $('#totalDiscount').val(formatVND(calculateMoney(data[1])));
                         $('#total-money').html(formatVND(calculateMoney(data[1])) +
-                        " VND"); //tính toán lại tổng tiền (calculateMoney), fomart tiền (formatVND)
+                            " VND"); //tính toán lại tổng tiền (calculateMoney), fomart tiền (formatVND)
                         disableCheckCoupon(); //không cho nhập tiếp. hiện nút hủy
                     }
 
@@ -659,7 +659,7 @@
                     address.val().includes('Phường')))) {
                 required = $(
                     '<span class="required-text">Vui lòng nhập địa chỉ chính xác (số nhà...,đường..., xã/phường..., huyện/quận..., tỉnh/tp....)</span>'
-                    );
+                );
                 address.addClass('required');
                 address.after(required);
                 return false;
@@ -668,7 +668,7 @@
                     'quận') && !address.val().includes('Quận')))) {
                 required = $(
                     '<span class="required-text">Vui lòng nhập địa chỉ chính xác (số nhà...,đường...,xã/phường..., huyện/quận..., tỉnh/tp....)</span>'
-                    );
+                );
                 address.addClass('required');
                 address.after(required);
                 return false;
@@ -677,7 +677,7 @@
                     address.val().includes('TP') && !address.val().includes('Tp')))) {
                 required = $(
                     '<span class="required-text">Vui lòng nhập địa chỉ chính xác (số nhà...,đường...,xã/phường..., huyện/quận..., tỉnh/tp....)</span>'
-                    );
+                );
                 address.addClass('required');
                 address.after(required);
                 return false;

@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TacGia extends Model
 {
     use HasFactory;
-    protected $table='tacgia';
-    protected $fillable = [
-        'id',
-        'tentacgia',
-    ];
+    protected $table = 'tacgia';
+    protected $fillable = ['id', 'tentacgia'];
 }

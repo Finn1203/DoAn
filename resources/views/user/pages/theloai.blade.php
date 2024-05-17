@@ -70,47 +70,47 @@
                         <!-- //price range -->
                         <!--preference -->
                         <!-- <div class="left-side">
-            <h3 class="agileits-sear-head">Ngôn ngữ</h3>
-            <ul>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Tiếng Việt</span>
-             </li>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Song Ngữ Anh - Việt</span>
-             </li>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Tiếng Anh</span>
-             </li>
+                <h3 class="agileits-sear-head">Ngôn ngữ</h3>
+                <ul>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Tiếng Việt</span>
+                 </li>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Song Ngữ Anh - Việt</span>
+                 </li>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Tiếng Anh</span>
+                 </li>
 
-            </ul>
-           </div> -->
+                </ul>
+               </div> -->
                         <!-- // preference -->
                         <!-- discounts -->
                         <!-- <div class="left-side">
-            <h3 class="agileits-sear-head">Hình thức</h3>
-            <ul>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Bìa Mềm</span>
-             </li>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Bìa Cứng</span>
-             </li>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Bộ Hộp</span>
-             </li>
-             <li>
-              <input type="checkbox" class="checked">
-              <span class="span">Sách Kèm Đĩa</span>
-             </li>
+                <h3 class="agileits-sear-head">Hình thức</h3>
+                <ul>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Bìa Mềm</span>
+                 </li>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Bìa Cứng</span>
+                 </li>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Bộ Hộp</span>
+                 </li>
+                 <li>
+                  <input type="checkbox" class="checked">
+                  <span class="span">Sách Kèm Đĩa</span>
+                 </li>
 
-            </ul>
-           </div> -->
+                </ul>
+               </div> -->
                         <!-- //discounts -->
                         <!-- reviews -->
 

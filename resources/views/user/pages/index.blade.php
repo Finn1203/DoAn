@@ -47,9 +47,9 @@
                     <div class="carousel-item item4"><img src="{!! asset('image/' . $slideshows->HinhAnh) !!}" <div
                             class="carousel-caption text-center">
                         <!-- <h3>Đồng Hành Cùng MyBook
-            <span>Trở Lại Trường Sau Mùa Hè</span>
-           </h3>
-           <a href="{{ route('user.shop') }}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a> -->
+                <span>Trở Lại Trường Sau Mùa Hè</span>
+               </h3>
+               <a href="{{ route('user.shop') }}" class="btn btn-sm animated-button gibson-three mt-4">Đến Cửa Hàng</a> -->
                     </div>
             </div>
             @endforeach
@@ -98,7 +98,8 @@
                                                             href="{{ route('user.single', $books->id) }}">{{ $books->TenSach }}</a>
                                                     </h4>
                                                     <div class="grid-price mt-2">
-                                                        <span class="money ">{{ number_format($books->GiaTien, 0, ',', ',') }}
+                                                        <span
+                                                            class="money ">{{ number_format($books->GiaTien, 0, ',', ',') }}
                                                             VND</span>
                                                     </div>
                                                 </div>

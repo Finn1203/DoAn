@@ -17,20 +17,17 @@ class CheckLogin
     public function handle(Request $request, Closure $next)
     {
         // nếu user đã đăng nhập
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $taikhoan = Auth::User();
             // nếu level =1 (admin), status = 1 (actived) thì cho qua.
-            if ($taikhoan->LoaiTK == 0)
-            {
+            if ($taikhoan->LoaiTK == 0) {
                 return $next($request);
-            }
-            else
-            {
+            } else {
                 Auth::logout();
                 return redirect()->route('getLogin');
             }
-        } else
+        } else {
             return redirect()->route('getLogin');
+        }
     }
 }

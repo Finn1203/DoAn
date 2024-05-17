@@ -8,10 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class SlideShow extends Model
 {
     use HasFactory;
-    protected $table='slideshow';
-    protected $fillable = [
-        'link',
-        'HinhAnh',
-        
-    ];
+    protected $table = 'slideshow';
+    protected $fillable = ['link', 'HinhAnh'];
 }
