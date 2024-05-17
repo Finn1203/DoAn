@@ -199,14 +199,14 @@ class HoaDonController extends Controller
     public function move($idHoaDB)
     {
         $order = HoaDonBan::where('IdHoaDB', $idHoaDB)->update(['TrangThai' => 4]);
-        return redirect()->back()->with('message', 'đơn hàng đang được vận chuyển');
+        return redirect()->back()->with('success', 'đơn hàng đang được vận chuyển');
         dd($order);
     }
 
     public function complete($idHoaDB)
     {
         $order = HoaDonBan::where('IdHoaDB', $idHoaDB)->update(['TrangThai' => 5]);
-        return redirect()->back()->with('message', 'đơn hàng đã giao thành công');
+        return redirect()->back()->with('success', 'đơn hàng đã giao thành công');
     }
     public function huy_don_hang(Request $req)
     {
@@ -217,7 +217,7 @@ class HoaDonController extends Controller
     {
         $order = HoaDonBan::where('IdHoaDB', $idHoaDB)->first();
         $order->delete();
-        Session::flash('message', 'Xóa đơn hàng thành công');
+        Session::flash('success', 'Xóa đơn hàng thành công');
         return redirect()->back();
     }
     public function changeStatusOrder(Request $request)

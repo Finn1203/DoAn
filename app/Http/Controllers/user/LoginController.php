@@ -53,12 +53,12 @@ class LoginController extends Controller
             $infoUser = ['id' => Auth::User()->id, 'Email' => Auth::User()->Email, 'HoTen' => Auth::User()->HoTen, 'AnhDaiDien' => Auth::User()->AnhDaiDien, 'DiaChi' => Auth::User()->DiaChi, 'SDT' => Auth::User()->SDT];
             $request->session()->put('infoUser', $infoUser);
             if (Auth::User()->LoaiTK == 0) {
-                return redirect()->route('user.index')->with('message', 'Đăng nhập thành công');
+                return redirect()->route('user.index')->with('success', 'Đăng nhập thành công');
             } else {
-                return redirect()->route('admin.dashboard')->with('message', 'Đăng nhập thành công');
+                return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
             }
         } else {
-            return redirect()->back()->with('message', 'Email hoặc Password không chính xác');
+            return redirect()->back()->with('error', 'Email hoặc Password không chính xác');
         }
     }
     //Đăng Ký
@@ -95,7 +95,7 @@ class LoginController extends Controller
         $user->TrangThai = 1;
         $user->Xoa = 0;
         if ($user->save()) {
-            return redirect()->route('getLogin')->with('message', 'Tạo tài khoản thành công!');
+            return redirect()->route('getLogin')->with('success', 'Tạo tài khoản thành công!');
         }
     }
     public function getLogout(Request $request)
@@ -130,10 +130,10 @@ class LoginController extends Controller
         $data['password'] = Hash::make($data['password']);
         if (Hash::check($request['passwordcu'], $user->password)) {
             if ($user->update($data)) {
-                return redirect('/')->with('message', 'Cập nhật tài khoản thành công!');
+                return redirect('/')->with('success', 'Cập nhật tài khoản thành công!');
             }
         } else {
-            return redirect('/')->with('message', 'Cập nhật tài khoản thất bại!');
+            return redirect('/')->with('error', 'Cập nhật tài khoản thất bại!');
         }
     }
     public function index(Request $request)

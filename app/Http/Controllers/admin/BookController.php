@@ -98,9 +98,9 @@ class BookController extends Controller
         $sach->TrangThai = $request->TrangThai;
         $sach->Xoa = 0;
         if ($sach->save()) {
-            Session::flash('message', 'thêm sản phẩm thành công');
+            Session::flash('success', 'thêm sản phẩm thành công');
         } else {
-            Session::flash('message', 'thêm sản phẩm thất bại');
+            Session::flash('error', 'thêm sản phẩm thất bại');
         }
         return redirect()->route('sach.index');
     }
@@ -165,9 +165,9 @@ class BookController extends Controller
 
         //if(Category::create($request->all()))
         if ($sach->update($data)) {
-            Session::flash('message', 'cập nhật sản phẩm thành công');
+            Session::flash('success', 'cập nhật sản phẩm thành công');
         } else {
-            Session::flash('message', 'cập nhật sản phẩm thất bại');
+            Session::flash('error', 'cập nhật sản phẩm thất bại');
         }
 
         return redirect()->route('sach.index');

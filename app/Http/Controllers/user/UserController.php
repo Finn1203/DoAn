@@ -435,7 +435,7 @@ class UserController extends Controller
             'email' => $request['Email'],
             'content' => $request['Content'],
         ];
-        Mail::to('kq909981@gmail.com')->send(new MailContact($data));
+        Mail::to('nguyennamphicv123@gmail.com')->send(new MailContact($data));
         //password tài khoản: a@123456
         Mail::to($request['Email'])->send(new MailResponse());
         return redirect()->back();

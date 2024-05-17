@@ -47,9 +47,9 @@ class NhaXuatBanController extends Controller
         $nhaxuatban->tennhaxb = $request->tennhaxb;
         $nhaxuatban->Xoa = 0;
         if ($nhaxuatban->save()) {
-            Session::flash('message', 'Thêm thành công!');
+            Session::flash('success', 'Thêm thành công!');
         } else {
-            Session::flash('message', 'Thêm thất bại!');
+            Session::flash('error', 'Thêm thất bại!');
         }
         return redirect()->route('nhaxuatban.index');
     }
@@ -95,9 +95,9 @@ class NhaXuatBanController extends Controller
         ]);
 
         if ($nhaxuatban->update($data)) {
-            Session::flash('message', 'cập nhật thành công!');
+            Session::flash('success', 'cập nhật thành công!');
         } else {
-            Session::flash('message', 'cập nhật thất bại!');
+            Session::flash('error', 'cập nhật thất bại!');
         }
 
         return redirect()->route('nhaxuatban.index');

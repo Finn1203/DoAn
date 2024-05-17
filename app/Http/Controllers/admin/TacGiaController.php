@@ -47,9 +47,9 @@ class TacGiaController extends Controller
         $tacgia->tentacgia = $request->tentacgia;
         $tacgia->Xoa = 0;
         if ($tacgia->save()) {
-            Session::flash('message', 'Thêm thành công!');
+            Session::flash('success', 'Thêm thành công!');
         } else {
-            Session::flash('message', 'Thêm thất bại!');
+            Session::flash('error', 'Thêm thất bại!');
         }
         return redirect()->route('tacgia.index');
     }
@@ -95,9 +95,9 @@ class TacGiaController extends Controller
         ]);
 
         if ($tacgia->update($data)) {
-            Session::flash('message', 'cập nhật thành công!');
+            Session::flash('success', 'cập nhật thành công!');
         } else {
-            Session::flash('message', 'cập nhật thất bại!');
+            Session::flash('error', 'cập nhật thất bại!');
         }
 
         return redirect()->route('tacgia.index');

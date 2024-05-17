@@ -51,9 +51,9 @@ class TheLoaiController extends Controller
         $theloai->TenTLCha = $request->TenTLCha;
         $theloai->Xoa = 0;
         if ($theloai->save()) {
-            Session::flash('message', 'Thêm thành công!');
+            Session::flash('success', 'Thêm thành công!');
         } else {
-            Session::flash('message', 'Thêm thất bại!');
+            Session::flash('error', 'Thêm thất bại!');
         }
         return redirect()->route('theloai.index');
     }
@@ -99,9 +99,9 @@ class TheLoaiController extends Controller
         ]);
 
         if ($theloai->update($data)) {
-            Session::flash('message', 'Cập nhật thành công!');
+            Session::flash('success', 'Cập nhật thành công!');
         } else {
-            Session::flash('message', 'Cập nhật thất bại!');
+            Session::flash('error', 'Cập nhật thất bại!');
         }
 
         return redirect()->route('theloai.index');

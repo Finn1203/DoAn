@@ -47,9 +47,9 @@ class KichThuocController extends Controller
         $kichthuoc->kichthuoc = $request->kichthuoc;
         $kichthuoc->Xoa = 0;
         if ($kichthuoc->save()) {
-            Session::flash('message', 'Thêm thành công!');
+            Session::flash('success', 'Thêm thành công!');
         } else {
-            Session::flash('message', 'Thêm thất bại!');
+            Session::flash('error', 'Thêm thất bại!');
         }
         return redirect()->route('kichthuoc.index');
     }
@@ -95,9 +95,9 @@ class KichThuocController extends Controller
         ]);
 
         if ($kichthuoc->update($data)) {
-            Session::flash('message', 'cập nhật thành công!');
+            Session::flash('success', 'cập nhật thành công!');
         } else {
-            Session::flash('message', 'cập nhật thất bại!');
+            Session::flash('error', 'cập nhật thất bại!');
         }
 
         return redirect()->route('kichthuoc.index');

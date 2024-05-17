@@ -52,9 +52,9 @@ class TheLoaiSachController extends Controller
         $theloaisach->IdTheLoai = $request->IdTheLoai;
         $theloaisach->Xoa = 0;
         if ($theloaisach->save()) {
-            Session::flash('message', 'Thêm thành công!');
+            Session::flash('success', 'Thêm thành công!');
         } else {
-            Session::flash('message', 'Thêm thất bại!');
+            Session::flash('error', 'Thêm thất bại!');
         }
         return redirect()->route('theloaisach.index');
     }
@@ -103,9 +103,9 @@ class TheLoaiSachController extends Controller
         ]);
 
         if ($theloaisach->update($data)) {
-            Session::flash('message', 'Cập nhật thành công!');
+            Session::flash('success', 'Cập nhật thành công!');
         } else {
-            Session::flash('message', 'Cập nhật thất bại!');
+            Session::flash('error', 'Cập nhật thất bại!');
         }
 
         return redirect()->route('theloaisach.index');

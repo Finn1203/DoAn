@@ -143,9 +143,9 @@ class KhuyenMaiController extends Controller
         ]);
 
         if ($khuyenmai->update($data)) {
-            Session::flash('message', 'cập nhật thành công!');
+            Session::flash('success', 'cập nhật thành công!');
         } else {
-            Session::flash('message', 'cập nhật thất bại!');
+            Session::flash('error', 'cập nhật thất bại!');
         }
 
         return redirect()->route('khuyenmai.index');

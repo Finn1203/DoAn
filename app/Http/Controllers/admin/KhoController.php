@@ -52,9 +52,9 @@ class KhoController extends Controller
         $kho->SoLuongTon = $request->SoLuongTon;
         $kho->Xoa = 0;
         if ($kho->save()) {
-            Session::flash('message', 'Thêm thành công!');
+            Session::flash('success', 'Thêm thành công!');
         } else {
-            Session::flash('message', 'Thêm thất bại!');
+            Session::flash('error', 'Thêm thất bại!');
         }
 
         return redirect()->route('kho.index');
@@ -101,9 +101,9 @@ class KhoController extends Controller
         ]);
 
         if ($kho->update($data)) {
-            Session::flash('message', 'cập nhật thành công!');
+            Session::flash('success', 'cập nhật thành công!');
         } else {
-            Session::flash('message', 'cập nhật thất bại!');
+            Session::flash('error', 'cập nhật thất bại!');
         }
 
         return redirect()->route('kho.index');

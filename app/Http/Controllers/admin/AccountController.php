@@ -78,9 +78,9 @@ class AccountController extends Controller
         $taikhoan->TrangThai = $request->TrangThai;
         $taikhoan->Xoa = 0;
         if ($taikhoan->save()) {
-            Session::flash('message', 'Thêm Thành Công!');
+            Session::flash('success', 'Thêm Thành Công!');
         } else {
-            Session::flash('message', 'Thêm Thất Bại!');
+            Session::flash('error', 'Thêm Thất Bại!');
         }
         return redirect()->route('taikhoan.index');
     }
@@ -144,9 +144,9 @@ class AccountController extends Controller
             $data['DiaChi'] = $request->DiaChi;
         }
         if ($taikhoan->update($data)) {
-            Session::flash('message', 'Cập nhật thành công!');
+            Session::flash('success', 'Cập nhật thành công!');
         } else {
-            Session::flash('message', 'Cập Nhật Thất Bại!');
+            Session::flash('error', 'Cập Nhật Thất Bại!');
         }
         return redirect()->route('taikhoan.index');
     }
