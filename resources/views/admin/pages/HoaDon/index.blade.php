@@ -11,7 +11,7 @@
                         </div>
                         <div class="sorting">
                             <select id="sort" class="frm-field required sect">
-                                <option value="null">Sắp xếp </option>
+                                <option value="null">Lọc đơn hàng </option>
                                 <!-- <option value="null">Bán chạy nhất</option>  -->
                                 <option value="{{ Request::url() }}?sort_by=all">Tất cả đơn hàng</option>
                                 <option value="{{ Request::url() }}?sort_by=new">Đơn hàng mới</option>
@@ -19,6 +19,7 @@
                                 <option value="{{ Request::url() }}?sort_by=cancel">Đơn hàng đã hủy</option>
                                 <option value="{{ Request::url() }}?sort_by=move">Đơn hàng đang giao</option>
                                 <option value="{{ Request::url() }}?sort_by=complete">Đơn hàng giao thành công</option>
+
                             </select>
                         </div>
                         @if (Session::has('message'))
@@ -50,7 +51,7 @@
                                             <th>Khuyến Mãi</th>
                                             <th>Phương Thức Thanh Toán</th>
                                             <th>Trạng Thái</th>
-                                            <th>Xem Chi Tiết Đơn Hàng</th>
+                                            <th>Xem Chi Tiết</th>
                                             <th>In Đơn Hàng</th>
                                         </tr>
                                     </thead>
@@ -92,16 +93,10 @@
                                                         {{ 'Giao Hàng Thành Công' }}
                                                     @endif
                                                 </td>
-
                                                 <td>
-
-
-
                                                     <button type="button" data-toggle="modal" class="chitiet"
                                                         data-target="#exampleModalLong" data-id="{{ $hoadons->id }}"
                                                         id="xemchitiet"><i class="fa fa-eye text-success"></i></button>
-
-
                                                 </td>
                                                 <td> <a href="{{ route('print_order', $hoadons->id) }}"
                                                         class="btn btn-warning"
@@ -135,12 +130,7 @@
                     </button>
                 </div>
                 <div id="order-modal" class="modal-body">
-
-
-
-                    <!--  <div id="in"></div> -->
-
-
+                      {{-- <div id="in"></div>  --}}
                 </div>
 
             </div>

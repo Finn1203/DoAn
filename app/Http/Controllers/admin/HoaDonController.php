@@ -337,10 +337,19 @@ class HoaDonController extends Controller
     }
     public function print_order($id)
     {
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->print_order_convert($id));
+        // $pdf = \App::make('dompdf.wrapper');
+        // $pdf->loadHTML($this->print_order_convert($id));
 
-        return $pdf->stream();
+        // return $pdf->stream();
+
+        try {
+            $pdf = app('dompdf.wrapper');
+            $pdf->loadHTML($this->print_order_convert($id));
+            return $pdf->stream();
+        } catch (Exception $e) {
+            // Handle the exception, e.g., log the error and return a user-friendly message
+            return 'Error generating PDF: ' . $e->getMessage();
+        }
     }
     public function print_order_convert($id)
     {
@@ -465,8 +474,7 @@ class HoaDonController extends Controller
 
       <div class="w-50 float-left logo mt-10">
 
-      <img src="user/images/logo_min.png' .
-            '">
+      <img src="user/images/logo_min.png' .'">
       </div>
       <div style="clear: both;"></div>
   </div>
@@ -515,9 +523,9 @@ class HoaDonController extends Controller
           </tr>
           <tr>
               <td>';
-        if ($order->PhuongTTT == 1) {
+        if ($order->PhuongTTT == 2) {
             $output .= 'Ví VNPAY';
-        } elseif ($order->PhuongTTT == 2) {
+        } elseif ($order->PhuongTTT == 1) {
             $output .= 'Thanh Toán Nhận Hàng';
         }
         $output .= '</td>
@@ -587,5 +595,41 @@ class HoaDonController extends Controller
   </div></body> </html>';
 
         return $output;
+
+        // $orderDetails = ChiTietHoaDonBan::where('IdHoaDB', $id)->get();
+        // $order = HoaDonBan::find($id);
+        // $discount = 0;
+
+        // if ($order->id_makm) {
+        //   $discount = ($order->TongTien * $order->maGiamGia->ChietKhau) / 100;
+        // }
+
+        // $customerName = Auth::user()->HoTen;
+        // $customerAddress = Auth::user()->DiaChi;
+        // $customerPhone = Auth::user()->SDT;
+        // $totalPrice = number_format($order->TongTien, 0, ',', ',');
+        // $discountedPrice = number_format($totalPrice - $discount, 0, ',', ',');
+
+        // $output = '<!DOCTYPE html><html lang="vn">';
+        // $output .= '<head><meta charset="utf-8"><style>' . $this->getPdfStyles() . '</style></head>'; // Assuming a separate method to get CSS
+
+        // $output .= '<body>';
+        // $output .= '<div class="head-title"><h1>HÓA ĐƠN BÁN</h1></div>';
+
+        // // ... rest of the HTML content using the retrieved data and formatted values ...
+
+        // $output .= '</body></html>';
+
+        // return $output;
+        // }
+
+        // // Optional method to store CSS styles separately
+        // private function getPdfStyles()
+        // {
+        // $styles = '
+        //   body { font-family: DejaVu Sans; }
+        //   /* ... other CSS styles ... */
+        // ';
+        // return $styles;
     }
 }
