@@ -5,7 +5,7 @@
         data: {
             labels: [''],
             datasets: [{
-                label: 'Monthly Earn',
+                label: 'Yearly Earn',
                 data: {!! json_encode($datas) !!},
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -78,7 +78,7 @@
             type: 'pie'
         },
         title: {
-            text: 'Biểu đồ thống kê đơn hàng năm 2024'
+            text: 'Biểu đồ thống kê đơn hàng tháng 2024'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.y}</b>'

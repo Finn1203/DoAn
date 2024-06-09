@@ -455,9 +455,15 @@ class HoaDonController extends Controller
       .total-right p{
           padding-right:20px;
       }
+      .logo{
+        width:100px;
+          height:100px;
+      }
   </style>
   <body>
   <div class="head-title">
+  <img class="logo" src="user/images/logo_min.png' .
+            '">
       <h1 class="text-center m-0 p-0">HÓA ĐƠN BÁN</h1>
   </div>
   <div class="add-detail mt-10">
@@ -474,7 +480,6 @@ class HoaDonController extends Controller
 
       <div class="w-50 float-left logo mt-10">
 
-      <img src="user/images/logo_min.png' .'">
       </div>
       <div style="clear: both;"></div>
   </div>
